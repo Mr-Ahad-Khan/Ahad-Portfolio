@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahad Khan | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: 'Outfit', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        canvas {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; }
+        .nav-right { display: flex; gap: 2.5rem; align-items: center; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.95rem; font-weight: 400; transition: color 0.3s; }
+        .nav-links a:hover { color: #ff5722; }
+
+        .btn {
+            background: #fff;
+            color: #000;
+            border-radius: 30px;
+            padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,87,34,0.3); }
+        .btn .icon {
+            background: #ff5722;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-left: 0.8rem;
+        }
+
+        /* Common */
+        section {
+            position: relative;
+            z-index: 10;
+            padding: 0 5%;
+            box-sizing: border-box;
+            margin-bottom: 25vh;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            color: #ff5722;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+        }
+
+        /* Hero */
+        .hero {
+            height: 120vh;
+            padding-top: 22vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-top {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 800px;
+        }
+        .hero-title h2 { font-size: 2rem; font-weight: 400; margin: 0; }
+        .hero-title h1 { 
+            font-size: 6rem; 
+            font-weight: 800; 
+            line-height: 0.95; 
+            margin: 0.5rem 0 0 -5px; 
+            letter-spacing: -3px; 
+        }
+        .hero-subtitle {
+            font-size: 2rem;
+            color: #ccc;
+            font-weight: 300;
+            margin: 0;
+        }
+        
+        /* Layouts directly on background (no blur/panels) */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .card {
+            padding: 2.5rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            color: #ff5722;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card p, .card ul {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card ul {
+            padding-left: 1.2rem;
+            margin-top: 0;
+        }
+        
+        .card li {
+            margin-bottom: 0.8rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #eee;
+            background: transparent;
+        }
+
+        .stack-group {
+            margin-bottom: 2rem;
+        }
+        
+        .stack-group strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #ff5722;
+            padding-bottom: 2px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: #ff5722;
+        }
+
+        /* Readability enhancement */
+        body h1, body h2, body h3, body h4, body p, body li, body strong, body .logo, body .nav-links a, body .section-title {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 4px 12px rgba(0,0,0,0.7);
+        }
+        
+        /* Contact Section Styles */
+        .align-center {
+            align-items: center;
+        }
+
+        .contact-card {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 480px;
+            margin-left: auto;
+        }
+
+        .contact-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            letter-spacing: -0.5px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-field label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .form-field input, .form-field textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            outline: none;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .form-field input:focus, .form-field textarea:focus {
+            border-color: #ff5722;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-field input::placeholder, .form-field textarea::placeholder {
+            color: #777;
+        }
+
+        .submit-btn {
+            background: #ff5722;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,87,34,0.3);
+        }
+
+        .contact-card, .contact-card * {
+            text-shadow: none !important;
+        }
+
+        /* Responsive design */
+        @media (max-width: 968px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .contact-card {
+                margin: 0 auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-title h1 { 
+                font-size: clamp(3rem, 12vw, 5rem); 
+                letter-spacing: -1.5px;
+            }
+            .hero-title h2 {
+                font-size: 1.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.6rem;
+            }
+            .hero-top {
+                padding: 1.8rem;
+            }
+            .card {
+                padding: 1.8rem;
+            }
+            .contact-card {
+                padding: 1.8rem;
+            }
+            .contact-info {
+                gap: 1rem;
+            }
+            .contact-info a {
+                font-size: 1rem;
+            }
+            section {
+                margin-bottom: 15vh;
+            }
+        }
+
+        /* Hamburger menu styling */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 110;
+        }
+
+        .burger-menu span {
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                padding: 2rem 5%;
+                box-sizing: border-box;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                gap: 1.5rem;
+                z-index: 99;
+            }
+
+            /* Hamburger animation */
+            .burger-menu.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .burger-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .burger-menu.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="scroll-canvas" width="1280" height="720"></canvas>
+    </div>
+
+    <nav>
+        <div class="logo">Ahad Khan</div>
+        <div class="nav-right">
+            <div class="nav-links" id="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#certifications">Licences & Achievements</a>
+            </div>
+            <a href="#contact" class="btn">Get in touch <span class="icon">&rarr;</span></a>
+            <button class="burger-menu" id="burger-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-top">
+            <div class="hero-title">
+                <h2>Hey, I'm Ahad Khan</h2>
+                <h1>MERN Stack<br>Developer</h1>
+            </div>
+            <h3 class="hero-subtitle">Event Host & Anchor</h3>
+            <div class="contact-info">
+                <a href="mailto:ahad998867@gmail.com">ahad998867@gmail.com</a>
+                <a href="tel:+919140058984">+91 91400 58984</a>
+                <a href="https://linkedin.com/in/mr-ahad-khan" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Mr-Ahad-Khan" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="grid-2">
+        <div>
+            <div class="section-title">About Me</div>
+            <div class="card">
+                <h3>Profile Summary</h3>
+                <p>I build web applications that solve real business problems — not just ones that compile. As a MERN Stack Developer (React.js, Node.js, Express.js, MongoDB, MySQL), I work across the full stack: designing responsive, user-friendly interfaces on the front end and building secure, well-structured REST APIs on the back end.</p>
+                <ul>
+                    <li>MCA Student @ SRMCEM (2027)</li>
+                    <li>BCA Graduate @ LPCPS (2025)</li>
+                    <li>Aspiring Full Stack Developer</li>
+                    <li>Passionate about building scalable web applications</li>
+                    <li>Experienced with Jira for Agile Project Management and Issue Tracking</li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div class="section-title">Languages</div>
+            <div class="card">
+                <h3>Proficiencies</h3>
+                <ul>
+                    <li><strong>English:</strong> Full professional proficiency</li>
+                    <li><strong>Hindi:</strong> Native or bilingual proficiency</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-title">Skills Inventory</div>
+        <div class="grid-2 card">
+            <div>
+                <div class="stack-group">
+                    <strong>Web & Full-Stack Development:</strong>
+                    <div class="tags">
+                        <span class="tag">MERN Stack</span><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span>
+                        <span class="tag">MongoDB</span><span class="tag">MySQL</span><span class="tag">REST APIs</span><span class="tag">Full-Stack Development</span>
+                        <span class="tag">Front-End Development</span><span class="tag">Back-End Web Development</span><span class="tag">JavaScript (ES6+)</span>
+                        <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Bootstrap</span>
+                    </div>
+                </div>
+                <div class="stack-group">
+                    <strong>Languages & Frameworks:</strong>
+                    <div class="tags">
+                        <span class="tag">C</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Unix</span><span class="tag">.NET Framework</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="stack-group">
+                    <strong>Tools & Methodologies:</strong>
+                    <div class="tags">
+                        <span class="tag">Git & GitHub</span><span class="tag">Jira</span><span class="tag">Software Engineering</span><span class="tag">Software Testing</span>
+                        <span class="tag">DBMS</span><span class="tag">Data Structures</span><span class="tag">Data Analysis</span><span class="tag">Research Skills</span>
+                        <span class="tag">Docker</span><span class="tag">Render</span><span class="tag">Vercel</span><span class="tag">Netlify</span><span class="tag">Railway</span>
+                    </div>
+                </div>
+                <div class="stack-group">
+                    <strong>Productivity & AI:</strong>
+                    <div class="tags">
+                        <span class="tag">Prompt Engineering</span><span class="tag">AI for Productivity</span><span class="tag">Presentation Development</span>
+                    </div>
+                </div>
+                <div class="stack-group">
+                    <strong>Creative & Soft Skills:</strong>
+                    <div class="tags">
+                        <span class="tag">Event Host & Anchor</span><span class="tag">Problem Solving</span><span class="tag">Teamwork</span><span class="tag">Leadership</span>
+                        <span class="tag">Communication</span><span class="tag">Management</span><span class="tag">Graphic Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="section-title">Experience & Education</div>
+        <div class="grid-2">
+            <div class="card">
+                <h4>Full-Stack Developer (Internship)</h4>
+                <h3>Techiguru</h3>
+                <p>Lucknow, Uttar Pradesh, India (Remote) | Jul 2026 – Present</p>
+                <p>Working on full stack development modules using React, Node, Express, MongoDB, and MySQL, with a focus on web app performance and back-end integration.</p>
+                
+                <br>
+                
+                <h4>Web Developer (Internship)</h4>
+                <h3>LaunchED Global</h3>
+                <p>Lucknow, Uttar Pradesh, India (Remote) | Mar 2025 – Apr 2025</p>
+                <p>Completed an intensive web development program building functional web applications using HTML5, CSS3, Jira, GitHub, and frontend engineering principles. Credential ID: LEDINT03-WD004.</p>
+                
+                <br>
+                
+                <h4>MERN Stack Summer Trainee</h4>
+                <h3>SRDT Pvt. Ltd.</h3>
+                <p>Lucknow, India | Summer 2024</p>
+                <p>Completed 60+ hours of industry-oriented MERN Stack training, delivering 5+ full-stack projects using 11+ technologies. Gained hands-on experience in responsive web development, RESTful API integration, database management, and version control.</p>
+            </div>
+            
+            <div class="card">
+                <h4>Master of Computer Applications (MCA), 2027</h4>
+                <h3>SRMCEM</h3>
+                <p>Affiliated to Dr. A.P.J. Abdul Kalam Technical University, Lucknow</p>
+                
+                <br>
+                
+                <h4>Bachelor of Computer Applications (BCA), 2025</h4>
+                <h3>Lucknow Public College of Professional Studies (LPCPS)</h3>
+                <p>Affiliated with University of Lucknow, Lucknow | Grade: First Division</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-title">Projects & Achievements</div>
+        <div class="grid-2">
+            <div class="card">
+                <h4>Full-Stack Web Application</h4>
+                <h3>Blinkit Clone</h3>
+                <ul>
+                    <li>Developed a scalable e-commerce platform with 11+ product categories and an 80+ Lighthouse score.</li>
+                    <li>Implemented JWT authentication (Signup, Login, Protected Routes).</li>
+                    <li>Built responsive UI with search, cart, and order management.</li>
+                </ul>
+                
+                <br>
+                
+                <h4>MERN Stack with RBAC</h4>
+                <h3>Student Tracking Platform</h3>
+                <ul>
+                    <li>Developed a role-based platform with multiple user roles and 5+ modules.</li>
+                    <li>Implemented JWT authentication, RBAC, and RESTful APIs.</li>
+                    <li>Built responsive dashboards for secure and efficient student management.</li>
+                </ul>
+                <p>Link: <a href="https://shiksha-setu-eta.vercel.app/" style="color:#ff5722;">shiksha-setu-eta.vercel.app</a></p>
+            </div>
+            
+            <div class="card">
+                <h4>Hackathons & Competitions</h4>
+                <h3>Team Leader & Member</h3>
+                <ul>
+                    <li>Participated in multiple hackathons as Team Leader and Team Member.</li>
+                    <li>Participated as Team Leader in the Coderush 2.0 Hackathon, organized by 8+ reputed organizations.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <div class="section-title">Licences, Certifications & Activities</div>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Licences & Certifications</h3>
+                <ul>
+                    <li><strong>AI Tools Workshop</strong> – Be10x (Apr 2026) | ID: 0270772f-3809-4400-b29b-1e1c61cd09971243380</li>
+                    <li><strong>Certified Web Developer</strong> – LaunchED Global (Apr 2025) | ID: LEDINT03-WD004</li>
+                    <li><strong>MERN Stack Summer Trainee</strong> – SRDT Pvt. Ltd. (Aug 2024)</li>
+                    <li><strong>Web Development Mentorship Course</strong> – Launched Global (IIT Kharagpur)</li>
+                    <li><strong>LibreOffice Calc</strong> – IIT Bombay</li>
+                    <li><strong>RDBMS PostgreSQL</strong> – IIT Bombay</li>
+                    <li><strong>Cyber Security Course</strong> – Lucknow Public College of Professional Studies</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>Activities & Academic Achievements</h3>
+                <ul>
+                    <li>Workshops & Seminars</li>
+                    <li>Hackathons (Team Leader & Competitor)</li>
+                    <li>Short-Term Courses</li>
+                    <li>Academic & Personal Projects</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">Contact</div>
+        <div class="grid-2 align-center">
+            <div>
+                <p style="font-size: 1.8rem; line-height: 1.6; max-width: 450px; color: #fff; font-weight: 300; margin: 0;">
+                    Please fill out the form below to contact me.
+                </p>
+            </div>
+            <div>
+                <div class="contact-card">
+                    <form id="contact-form">
+                        <div class="form-field">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" id="form-submit-btn">Send Message</button>
+                        <p id="form-status" style="margin-top: 1.5rem; font-size: 1.25rem; font-weight: 700; display: none; text-align: center; transition: all 0.3s ease;"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const canvas = document.getElementById("scroll-canvas");
+        const context = canvas.getContext("2d");
+        const frameCount = 300;
+        
+        const currentFrame = index => (
+            `ezgif-frame-${index.toString().padStart(3, '0')}.jpg`
+        );
+
+        const images = [];
+        
+        for (let i = 1; i <= frameCount; i++) {
+            const img = new Image();
+            img.src = currentFrame(i);
+            images.push(img);
+        }
+
+        images[0].onload = () => {
+            context.drawImage(images[0], 0, 0);
+        };
+
+        let targetFrameIndex = 0;
+        let currentFrameIndex = 0;
+
+        window.addEventListener('scroll', () => {
+            const html = document.documentElement;
+            const scrollTop = html.scrollTop || document.body.scrollTop;
+            const maxScrollTop = html.scrollHeight - window.innerHeight;
+            
+            const scrollFraction = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
+            
+            targetFrameIndex = Math.min(
+                frameCount - 1,
+                Math.max(0, Math.floor(scrollFraction * frameCount))
+            );
+        });
+
+        function updateCanvas() {
+            currentFrameIndex += (targetFrameIndex - currentFrameIndex) * 0.08;
+            const frameIndex = Math.round(currentFrameIndex);
+            
+            if (images[frameIndex] && images[frameIndex].complete && images[frameIndex].naturalWidth !== 0) {
+                context.drawImage(images[frameIndex], 0, 0);
+            }
+            
+            requestAnimationFrame(updateCanvas);
+        }
+
+        updateCanvas();
+
+        // Hamburger Menu Toggle
+        const burgerToggle = document.getElementById("burger-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        burgerToggle.addEventListener("click", () => {
+            burgerToggle.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu when clicking a link
+        const links = navLinks.querySelectorAll("a");
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+                burgerToggle.classList.remove("active");
+                navLinks.classList.remove("active");
+            });
+        });
+
+        // AJAX Form Submission
+        const contactForm = document.getElementById("contact-form");
+        const formStatus = document.getElementById("form-status");
+        const submitBtn = document.getElementById("form-submit-btn");
+
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+            formStatus.style.display = "block";
+            formStatus.style.color = "#ffffff";
+            formStatus.textContent = "Sending your message...";
+
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                subject: document.getElementById("subject").value,
+                message: document.getElementById("message").value
+            };
+
+            fetch("https://formsubmit.co/ajax/ahad998867@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Form submission failed");
+                }
+            })
+            .then(data => {
+                formStatus.style.color = "#4ade80"; // bright green
+                formStatus.textContent = "Message sent successfully!";
+                contactForm.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Message";
+                setTimeout(() => {
+                    formStatus.style.display = "none";
+                }, 5000);
+            })
+            .catch(error => {
+                formStatus.style.color = "#f87171"; // bright red
+                formStatus.textContent = "Failed to send. Please try again later.";
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Message";
+            });
+        });
+    </script>
+</body>
+</html>
