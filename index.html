@@ -8,6 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Offset to prevent fixed navbar from covering section titles */
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -331,40 +336,6 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hero-title h1 { 
-                font-size: clamp(3rem, 12vw, 5rem); 
-                letter-spacing: -1.5px;
-            }
-            .hero-title h2 {
-                font-size: 1.5rem;
-            }
-            .hero-subtitle {
-                font-size: 1.6rem;
-            }
-            .hero-top {
-                padding: 1.8rem;
-            }
-            .card {
-                padding: 1.8rem;
-            }
-            .contact-card {
-                padding: 1.8rem;
-            }
-            .contact-info {
-                gap: 1rem;
-            }
-            .contact-info a {
-                font-size: 1rem;
-            }
-            section {
-                margin-bottom: 15vh;
-            }
-        }
-
         /* Hamburger menu styling */
         .burger-menu {
             display: none;
@@ -387,6 +358,30 @@
         }
 
         @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+            
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .nav-right {
+                gap: 1rem;
+            }
+
+            .btn {
+                padding: 0.35rem 0.35rem 0.35rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .btn .icon {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+                margin-left: 0.5rem;
+            }
+
             .burger-menu {
                 display: flex;
             }
@@ -421,6 +416,52 @@
             }
             .burger-menu.active span:nth-child(3) {
                 transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 15vh;
+                padding-bottom: 5vh;
+            }
+
+            .hero-title h1 { 
+                font-size: clamp(2.2rem, 9vw, 4rem); 
+                letter-spacing: -1.5px;
+            }
+
+            .hero-title h2 {
+                font-size: 1.4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .hero-top {
+                padding: 1.8rem;
+                gap: 1.2rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .contact-info {
+                gap: 1rem;
+            }
+
+            .contact-info a {
+                font-size: 0.95rem;
+                word-break: break-all;
+            }
+
+            section {
+                margin-bottom: 12vh;
             }
         }
     </style>
@@ -733,8 +774,8 @@
             navLinks.classList.toggle("active");
         });
 
-        // Close menu when clicking a link
-        const links = navLinks.querySelectorAll("a");
+        // Close menu when clicking a link or CTA button
+        const links = document.querySelectorAll("#nav-links a, nav .btn");
         links.forEach(link => {
             link.addEventListener("click", () => {
                 burgerToggle.classList.remove("active");
