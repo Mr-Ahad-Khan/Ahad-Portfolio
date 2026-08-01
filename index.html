@@ -43,7 +43,7 @@
 
         /* Nav */
         nav {
-            position: fixed;
+            position: fixed !important;
             top: 0;
             left: 0;
             width: 100%;
@@ -52,11 +52,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.6);
+            z-index: 99999 !important; /* Set extremely high to guarantee visibility on top of all canvas/sections */
+            background: rgba(0, 0, 0, 0.9) !important; /* Semi-opaque background to prevent WebKit scroll canvas dropping fixed elements */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            /* Force hardware acceleration layers to resolve browser scroll issues */
+            transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
         .logo { font-size: 1.5rem; font-weight: 700; }
         .nav-right { display: flex; gap: 2.5rem; align-items: center; }
@@ -147,6 +153,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
         }
 
         .card {
@@ -245,10 +257,19 @@
             align-items: center;
         }
 
+        .contact-lead-text {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            max-width: 450px;
+            color: #fff;
+            font-weight: 300;
+            margin: 0;
+        }
+
         .contact-card {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(10, 10, 10, 0.9); /* Darker background to prevent portrait image details from reducing contrast */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #fff;
             padding: 2.5rem;
@@ -280,6 +301,8 @@
         }
 
         .form-field input, .form-field textarea {
+            width: 100%;
+            box-sizing: border-box;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
@@ -326,7 +349,7 @@
 
         /* Responsive design */
         @media (max-width: 968px) {
-            .grid-2 {
+            .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
@@ -463,6 +486,12 @@
             section {
                 margin-bottom: 12vh;
             }
+
+            .contact-lead-text {
+                font-size: 1.25rem !important;
+                margin: 0 auto 2rem auto !important;
+                text-align: center !important;
+            }
         }
     </style>
 </head>
@@ -513,7 +542,7 @@
                 <h3>Profile Summary</h3>
                 <p>I build web applications that solve real business problems — not just ones that compile. As a MERN Stack Developer (React.js, Node.js, Express.js, MongoDB, MySQL), I work across the full stack: designing responsive, user-friendly interfaces on the front end and building secure, well-structured REST APIs on the back end.</p>
                 <ul>
-                    <li>MCA Student @ SRMCEM (2027)</li>
+                    <li>MCA Student @ Shri Ramswaroop Memorial College of Engineering and Management (SRMCEM) (2027)</li>
                     <li>BCA Graduate @ LPCPS (2025)</li>
                     <li>Aspiring Full Stack Developer</li>
                     <li>Passionate about building scalable web applications</li>
@@ -605,7 +634,7 @@
             
             <div class="card">
                 <h4>Master of Computer Applications (MCA), 2027</h4>
-                <h3>SRMCEM</h3>
+                <h3>Shri Ramswaroop Memorial College of Engineering and Management (SRMCEM)</h3>
                 <p>Affiliated to Dr. A.P.J. Abdul Kalam Technical University, Lucknow</p>
                 
                 <br>
@@ -619,34 +648,101 @@
 
     <section id="projects">
         <div class="section-title">Projects & Achievements</div>
-        <div class="grid-2">
+        <div class="grid-3">
             <div class="card">
-                <h4>Full-Stack Web Application</h4>
+                <h4>MERN & AI Platform</h4>
+                <h3>Smart Workspace RAG</h3>
+                <ul>
+                    <li>Transforms markdown documents into an AI-powered knowledge graph using MongoDB Atlas Vector Search.</li>
+                    <li>Designed real-time context-aware collaborative editing features with graph visualizations.</li>
+                    <li>Utilized RAG pipelines to enable semantic search and document chat capabilities.</li>
+                </ul>
+                <p>GitHub: <a href="https://github.com/Mr-Ahad-Khan/smart-workspace-rag" target="_blank" style="color:#ff5722;">smart-workspace-rag</a></p>
+            </div>
+
+            <div class="card">
+                <h4>On-Device AI Android Automation</h4>
+                <h3>ContextSwitch</h3>
+                <ul>
+                    <li>Developed an intelligent automation app using on-device AI (Gemini Nano) for local offline execution.</li>
+                    <li>Optimizes user workflows by dynamically analyzing local environments (Wi-Fi, time, calendar events).</li>
+                    <li>Built using Kotlin, utilizing background services for seamless context-based actions.</li>
+                </ul>
+                <p>GitHub: <a href="https://github.com/Mr-Ahad-Khan/ContextSwitch" target="_blank" style="color:#ff5722;">ContextSwitch</a></p>
+            </div>
+
+            <div class="card">
+                <h4>Decoupled Full-Stack MERN</h4>
+                <h3>AuraCMS</h3>
+                <ul>
+                    <li>Engineered a decoupled MERN content management system in pure JavaScript.</li>
+                    <li>Features dynamic content management, automated slugification, search, and pagination.</li>
+                    <li>Implemented robust role-based access control (RBAC) and JWT session security.</li>
+                </ul>
+                <p>GitHub: <a href="https://github.com/Mr-Ahad-Khan/AuraCMS" target="_blank" style="color:#ff5722;">AuraCMS</a></p>
+            </div>
+
+            <div class="card">
+                <h4>Full-Stack E-Commerce</h4>
                 <h3>Blinkit Clone</h3>
                 <ul>
                     <li>Developed a scalable e-commerce platform with 11+ product categories and an 80+ Lighthouse score.</li>
-                    <li>Implemented JWT authentication (Signup, Login, Protected Routes).</li>
-                    <li>Built responsive UI with search, cart, and order management.</li>
+                    <li>Implemented secure JWT authentication (Signup, Login, Protected Routes).</li>
+                    <li>Built responsive UI with real-time search, cart, and order management.</li>
                 </ul>
-                
-                <br>
-                
+            </div>
+
+            <div class="card">
                 <h4>MERN Stack with RBAC</h4>
                 <h3>Student Tracking Platform</h3>
                 <ul>
-                    <li>Developed a role-based platform with multiple user roles and 5+ modules.</li>
-                    <li>Implemented JWT authentication, RBAC, and RESTful APIs.</li>
-                    <li>Built responsive dashboards for secure and efficient student management.</li>
+                    <li>Developed a role-based tracking platform with multiple user roles and 5+ active modules.</li>
+                    <li>Implemented JWT authentication, RBAC, and secure RESTful APIs.</li>
+                    <li>Built responsive dashboards for secure and efficient student tracking.</li>
                 </ul>
-                <p>Link: <a href="https://shiksha-setu-eta.vercel.app/" style="color:#ff5722;">shiksha-setu-eta.vercel.app</a></p>
+                <p>Link: <a href="https://shiksha-setu-eta.vercel.app/" target="_blank" style="color:#ff5722;">shiksha-setu-eta.vercel.app</a></p>
             </div>
-            
+
             <div class="card">
-                <h4>Hackathons & Competitions</h4>
-                <h3>Team Leader & Member</h3>
+                <h4>Responsive Front-End Clone</h4>
+                <h3>Amazon Clone</h3>
+                <ul>
+                    <li>Recreated Amazon's homepage navbar, product categories, and layouts using HTML5 and CSS3.</li>
+                    <li>Applied modern responsive design principles to ensure scaling across mobile and desktop devices.</li>
+                    <li>Utilized clean CSS Flexbox and Grid layouts.</li>
+                </ul>
+                <p>GitHub: <a href="https://github.com/Mr-Ahad-Khan/amazon.com-clone-project" target="_blank" style="color:#ff5722;">amazon.com-clone-project</a></p>
+            </div>
+
+            <div class="card">
+                <h4>Live Exchange Rates</h4>
+                <h3>Currency Converter</h3>
+                <ul>
+                    <li>Built a lightweight currency converter app fetching live rates using the Frankfurter API.</li>
+                    <li>Features dynamic country flag rendering and highly responsive, user-friendly UI.</li>
+                    <li>Written in vanilla HTML, CSS, and JavaScript for minimal bundle size and fast load times.</li>
+                </ul>
+                <p>GitHub: <a href="https://github.com/Mr-Ahad-Khan/currency-converter-project" target="_blank" style="color:#ff5722;">currency-converter-project</a></p>
+            </div>
+
+            <div class="card">
+                <h4>Interactive Web Game</h4>
+                <h3>Rock Paper Scissors</h3>
+                <ul>
+                    <li>Developed a browser-based interactive game using vanilla HTML, CSS, and JavaScript.</li>
+                    <li>Integrated randomized computer moves, instant score outcomes, and custom gameplay logic.</li>
+                    <li>Designed modern UI layout with smooth micro-animations.</li>
+                </ul>
+                <p>GitHub: <a href="https://github.com/Mr-Ahad-Khan/Rock_Paper_Scissors_Game_Project" target="_blank" style="color:#ff5722;">Rock_Paper_Scissors_Game_Project</a></p>
+            </div>
+
+            <div class="card">
+                <h4>Leadership & Collaboration</h4>
+                <h3>Hackathons & Competitions</h3>
                 <ul>
                     <li>Participated in multiple hackathons as Team Leader and Team Member.</li>
-                    <li>Participated as Team Leader in the Coderush 2.0 Hackathon, organized by 8+ reputed organizations.</li>
+                    <li>Led a team in the Coderush 2.0 Hackathon organized by 8+ reputed organizations.</li>
+                    <li>Collaborated with cross-functional teams to prototype fast software applications under tight deadlines.</li>
                 </ul>
             </div>
         </div>
@@ -684,7 +780,7 @@
         <div class="section-title">Contact</div>
         <div class="grid-2 align-center">
             <div>
-                <p style="font-size: 1.8rem; line-height: 1.6; max-width: 450px; color: #fff; font-weight: 300; margin: 0;">
+                <p class="contact-lead-text">
                     Please fill out the form below to contact me.
                 </p>
             </div>
