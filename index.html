@@ -347,6 +347,34 @@
             text-shadow: none !important;
         }
 
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 10;
+        }
+
+        footer p {
+            margin: 0;
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: #ff5722;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
         /* Responsive design */
         @media (max-width: 968px) {
             .grid-2, .grid-3 {
@@ -509,6 +537,7 @@
                 <a href="#experience">Experience</a>
                 <a href="#projects">Projects</a>
                 <a href="#certifications">Licences & Achievements</a>
+                <a href="./Ahad_Khan_Resume.pdf" target="_blank" download>Resume</a>
             </div>
             <a href="#contact" class="btn">Get in touch <span class="icon">&rarr;</span></a>
             <button class="burger-menu" id="burger-toggle" aria-label="Toggle menu">
@@ -548,6 +577,7 @@
                     <li>Passionate about building scalable web applications</li>
                     <li>Experienced with Jira for Agile Project Management and Issue Tracking</li>
                 </ul>
+                <a href="./Ahad_Khan_Resume.pdf" target="_blank" download class="btn" style="margin-top: 1.5rem; width: fit-content;">Download Resume <span class="icon">&darr;</span></a>
             </div>
         </div>
         <div>
@@ -810,6 +840,10 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2026 Ahad Khan. All rights reserved. | <a href="./Ahad_Khan_Resume.pdf" target="_blank" download>Download Resume</a></p>
+    </footer>
 
     <script>
         const canvas = document.getElementById("scroll-canvas");
