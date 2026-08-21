@@ -379,12 +379,17 @@
         /* Responsive design */
         @media (max-width: 968px) {
             .grid-2, .grid-3 {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
                 gap: 2.5rem;
-            }
-            .contact-card {
-                margin: 0 auto;
                 width: 100%;
+                box-sizing: border-box;
+            }
+
+            .contact-card {
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
         }
 
@@ -500,7 +505,28 @@
             }
 
             .contact-card {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
                 padding: 1.5rem;
+                box-sizing: border-box;
+            }
+
+            .contact-card form {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .form-field {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .form-field input,
+            .form-field textarea {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
 
             .contact-info {
@@ -514,6 +540,12 @@
 
             section {
                 margin-bottom: 12vh;
+            }
+
+            #contact {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
             }
 
             .contact-lead-text {
