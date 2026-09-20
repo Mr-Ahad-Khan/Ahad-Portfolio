@@ -816,6 +816,14 @@
       /* Certifications Section */
       .cert-section-header {
         margin-bottom: 2rem;
+        padding: 1.4rem 1.6rem;
+        background: rgba(8, 8, 11, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-left: 3px solid #ff5722;
+        border-radius: 12px;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       }
 
       .cert-subtitle {
@@ -874,10 +882,10 @@
       }
 
       .cert-card {
-        background: rgba(14, 14, 18, 0.75);
+        background: rgba(10, 10, 14, 0.94);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.16);
         border-radius: 18px;
         padding: 1.5rem;
         display: flex;
@@ -966,6 +974,14 @@
           rgba(15, 15, 20, 0.95)
         );
         transition: background 0.3s ease;
+      }
+
+      .cert-pdf-canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #fff;
       }
 
       .cert-card:hover .cert-doc-preview {
@@ -4525,6 +4541,52 @@
           img.src = fileUrl;
         }
       }
+
+      function renderPdfThumbnails() {
+        if (!window.pdfjsLib) return;
+
+        document
+          .querySelectorAll('.cert-thumb-box[data-format="pdf"]')
+          .forEach((thumbnail) => {
+            const fileUrl = thumbnail.getAttribute("data-file");
+            const preview = thumbnail.querySelector(".cert-doc-preview");
+            if (!fileUrl || !preview) return;
+
+            pdfjsLib
+              .getDocument(fileUrl)
+              .promise.then((pdf) => pdf.getPage(1))
+              .then((page) => {
+                const unscaledViewport = page.getViewport({ scale: 1 });
+                const scale = Math.max(
+                  thumbnail.clientWidth,
+                  280,
+                ) / unscaledViewport.width;
+                const viewport = page.getViewport({ scale });
+                const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+                const canvas = document.createElement("canvas");
+                const context = canvas.getContext("2d");
+
+                canvas.className = "cert-pdf-canvas";
+                canvas.width = Math.floor(viewport.width * pixelRatio);
+                canvas.height = Math.floor(viewport.height * pixelRatio);
+                canvas.style.width = `${Math.floor(viewport.width)}px`;
+                canvas.style.height = `${Math.floor(viewport.height)}px`;
+
+                return page
+                  .render({
+                    canvasContext: context,
+                    viewport,
+                    transform: [pixelRatio, 0, 0, pixelRatio, 0, 0],
+                  })
+                  .promise.then(() => preview.replaceWith(canvas));
+              })
+              .catch((error) => {
+                console.warn("PDF thumbnail render failed:", error);
+              });
+          });
+      }
+
+      renderPdfThumbnails();
 
       // Interactive On-Page Certificate Modal Viewer
       const certModal = document.getElementById("cert-modal");
