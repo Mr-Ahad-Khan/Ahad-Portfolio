@@ -4402,8 +4402,22 @@
         });
       });
 
-      // Configure PDF.js worker
+      // Configure PDF.js worker and canvas defaults to suppress Chrome readback warnings
       if (window.pdfjsLib) {
+        const originalGetContext = HTMLCanvasElement.prototype.getContext;
+        if (!HTMLCanvasElement.prototype.__pdfjsPatchedContext) {
+          HTMLCanvasElement.prototype.getContext = function (type, attrs) {
+            if (type === "2d") {
+              const safeAttrs = Object.assign({}, attrs || {}, {
+                willReadFrequently: true,
+              });
+              return originalGetContext.call(this, type, safeAttrs);
+            }
+            return originalGetContext.call(this, type, attrs);
+          };
+          HTMLCanvasElement.prototype.__pdfjsPatchedContext = true;
+        }
+
         pdfjsLib.GlobalWorkerOptions.workerSrc = "./js/pdf.worker.min.js";
         if (pdfjsLib.setVerbosityLevel && pdfjsLib.VerbosityLevel) {
           pdfjsLib.setVerbosityLevel(pdfjsLib.VerbosityLevel.ERRORS);
@@ -4420,8 +4434,18 @@
           </div>
         `;
 
+        if (isPdf && location.protocol === "file:") {
+          container.innerHTML = `
+            <iframe src="${fileUrl}#toolbar=0&view=Fit" class="modal-doc-fallback"></iframe>
+          `;
+          return;
+        }
+
         if (isPdf && window.pdfjsLib) {
-          const loadingTask = pdfjsLib.getDocument(fileUrl);
+          const loadingTask = pdfjsLib.getDocument({
+            url: fileUrl,
+            disableWorker: true,
+          });
           loadingTask.promise
             .then((pdf) => {
               pdf.getPage(1).then((page) => {
@@ -4450,7 +4474,10 @@
 
                 const canvas = document.createElement("canvas");
                 canvas.className = "modal-doc-canvas";
-                const context = canvas.getContext("2d");
+                const context = canvas.getContext("2d", {
+                  alpha: false,
+                  willReadFrequently: true,
+                });
                 canvas.width = Math.floor(viewport.width * pixelRatio);
                 canvas.height = Math.floor(viewport.height * pixelRatio);
                 canvas.style.width = Math.floor(viewport.width) + "px";
@@ -4478,7 +4505,10 @@
                         const nextCanvas = document.createElement("canvas");
                         nextCanvas.className = "modal-doc-canvas";
                         nextCanvas.style.marginTop = "1rem";
-                        const nextContext = nextCanvas.getContext("2d");
+                        const nextContext = nextCanvas.getContext("2d", {
+                          alpha: false,
+                          willReadFrequently: true,
+                        });
                         nextCanvas.width = Math.floor(
                           nextViewport.width * pixelRatio,
                         );
@@ -4543,28 +4573,51 @@
       }
 
       function renderPdfThumbnails() {
+        if (location.protocol === "file:") {
+          document
+            .querySelectorAll('.cert-thumb-box[data-format="pdf"]')
+            .forEach((thumbnail) => {
+              const preview = thumbnail.querySelector(".cert-doc-preview");
+              if (!preview) return;
+              preview.innerHTML = `
+                <div class="pdf-native-fallback" style="display:flex;align-items:center;justify-content:center;height:100%;width:100%;color:#fff;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;font-size:0.8rem;letter-spacing:0.04em;text-transform:uppercase;">
+                  PDF
+                </div>
+              `;
+            });
+          return;
+        }
+
         if (!window.pdfjsLib) return;
 
         document
           .querySelectorAll('.cert-thumb-box[data-format="pdf"]')
           .forEach((thumbnail) => {
+            if (thumbnail.dataset.pdfRendered === "true") return;
+
             const fileUrl = thumbnail.getAttribute("data-file");
             const preview = thumbnail.querySelector(".cert-doc-preview");
             if (!fileUrl || !preview) return;
 
+            thumbnail.dataset.pdfRendered = "true";
+
             pdfjsLib
-              .getDocument(fileUrl)
+              .getDocument({
+                url: fileUrl,
+                disableWorker: true,
+              })
               .promise.then((pdf) => pdf.getPage(1))
               .then((page) => {
                 const unscaledViewport = page.getViewport({ scale: 1 });
-                const scale = Math.max(
-                  thumbnail.clientWidth,
-                  280,
-                ) / unscaledViewport.width;
+                const scale =
+                  Math.max(thumbnail.clientWidth, 280) / unscaledViewport.width;
                 const viewport = page.getViewport({ scale });
                 const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
                 const canvas = document.createElement("canvas");
-                const context = canvas.getContext("2d");
+                const context = canvas.getContext("2d", {
+                  alpha: false,
+                  willReadFrequently: true,
+                });
 
                 canvas.className = "cert-pdf-canvas";
                 canvas.width = Math.floor(viewport.width * pixelRatio);
