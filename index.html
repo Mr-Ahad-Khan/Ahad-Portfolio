@@ -4418,7 +4418,10 @@
           HTMLCanvasElement.prototype.__pdfjsPatchedContext = true;
         }
 
-        pdfjsLib.GlobalWorkerOptions.workerSrc = "./js/pdf.worker.min.js";
+        if (location.protocol !== "file:") {
+          pdfjsLib.GlobalWorkerOptions.workerSrc = "./js/pdf.worker.min.js";
+        }
+
         if (pdfjsLib.setVerbosityLevel && pdfjsLib.VerbosityLevel) {
           pdfjsLib.setVerbosityLevel(pdfjsLib.VerbosityLevel.ERRORS);
         }
