@@ -1483,18 +1483,44 @@
         }
       }
 
-      @media (min-width: 769px) and (max-width: 1024px) {
+      @media (min-width: 769px) and (max-width: 1100px) {
         .top-nav {
           padding: 0.9rem 3%;
         }
 
         .nav-right {
-          gap: 0.75rem;
+          flex: 1;
+          gap: 0.55rem;
+          justify-content: flex-end;
+        }
+
+        .nav-links {
+          display: flex;
+          flex: 1;
+          justify-content: flex-end;
+          gap: clamp(0.2rem, 0.7vw, 0.55rem);
+          min-width: 0;
+        }
+
+        .nav-links a {
+          min-width: 0;
+          padding: 0.3rem clamp(0.3rem, 0.65vw, 0.55rem);
+          font-size: clamp(0.68rem, 1.15vw, 0.82rem);
+          line-height: 1.15;
+        }
+
+        .nav-links a:nth-child(5) {
+          max-width: 8.5rem;
         }
 
         .btn {
           padding: 0.38rem 0.45rem 0.38rem 0.9rem;
           font-size: 0.85rem;
+          flex-shrink: 0;
+        }
+
+        .burger-menu {
+          display: none;
         }
 
         .grid-2,
@@ -1568,6 +1594,12 @@
       @media (max-width: 1024px) {
         .burger-menu {
           display: flex;
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1100px) {
+        .burger-menu {
+          display: none;
         }
       }
 
