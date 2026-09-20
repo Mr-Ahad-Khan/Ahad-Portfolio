@@ -65,7 +65,8 @@
         background: rgba(0, 0, 0, 0.9) !important;
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
         transform: translate3d(0, 0, 0);
         -webkit-transform: translate3d(0, 0, 0);
         will-change: transform;
@@ -74,6 +75,25 @@
         transition:
           padding 0.3s ease,
           background 0.3s ease;
+      }
+
+      .top-nav::after {
+        content: "";
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        bottom: -1px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 87, 34, 0.7) 24%,
+          rgba(255, 145, 92, 0.9) 50%,
+          rgba(255, 87, 34, 0.7) 76%,
+          transparent
+        );
+        opacity: 0.75;
+        pointer-events: none;
       }
       .logo {
         font-size: 1.55rem;
@@ -95,6 +115,7 @@
         display: flex;
         gap: 2.2rem;
         align-items: center;
+        min-width: 0;
       }
       .nav-links {
         display: flex;
@@ -1559,6 +1580,25 @@
           gap: 0.75rem;
         }
 
+        .logo {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .nav-links.active {
+          grid-template-columns: 1fr;
+          gap: 0.25rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        .nav-links a,
+        .nav-links a:nth-child(5) {
+          grid-column: auto;
+          justify-content: flex-start;
+          padding: 0.65rem 0.75rem;
+        }
+
         .btn {
           padding: 0.38rem 0.45rem 0.38rem 1.1rem;
           font-size: 0.88rem;
@@ -1889,7 +1929,14 @@
         <a href="#contact" class="btn"
           >Get in touch <span class="icon">&rarr;</span></a
         >
-        <button class="burger-menu" id="burger-toggle" aria-label="Toggle menu">
+        <button
+          class="burger-menu"
+          id="burger-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -3933,13 +3980,14 @@
         </div>
         <div>
           <div class="contact-card">
-            <form id="contact-form">
+            <form id="contact-form" autocomplete="on">
               <div class="form-field">
                 <label for="name">Full Name</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
+                  autocomplete="name"
                   placeholder="Enter your full name"
                   required
                 />
@@ -3950,6 +3998,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  autocomplete="email"
                   placeholder="Enter your email address"
                   required
                 />
@@ -3960,6 +4009,7 @@
                   type="text"
                   id="subject"
                   name="subject"
+                  autocomplete="off"
                   placeholder="Enter subject"
                   required
                 />
@@ -3969,6 +4019,7 @@
                 <textarea
                   id="message"
                   name="message"
+                  autocomplete="off"
                   rows="4"
                   placeholder="Enter your message"
                   required
@@ -4157,17 +4208,36 @@
       const navLinks = document.getElementById("nav-links");
 
       burgerToggle.addEventListener("click", () => {
-        burgerToggle.classList.toggle("active");
-        navLinks.classList.toggle("active");
+        const isOpen = navLinks.classList.toggle("active");
+        burgerToggle.classList.toggle("active", isOpen);
+        burgerToggle.setAttribute("aria-expanded", String(isOpen));
       });
+
+      const closeNavigation = () => {
+        navLinks.classList.remove("active");
+        burgerToggle.classList.remove("active");
+        burgerToggle.setAttribute("aria-expanded", "false");
+      };
 
       // Close menu when clicking a link or CTA button
       const links = document.querySelectorAll("#nav-links a, nav .btn");
       links.forEach((link) => {
         link.addEventListener("click", () => {
-          burgerToggle.classList.remove("active");
-          navLinks.classList.remove("active");
+          closeNavigation();
         });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (
+          navLinks.classList.contains("active") &&
+          !event.target.closest(".top-nav")
+        ) {
+          closeNavigation();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeNavigation();
       });
 
       // AJAX Form Submission
@@ -4178,6 +4248,9 @@
       const successClose = document.getElementById("contact-success-close");
 
       const closeSuccessModal = () => {
+        if (successModal.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
         successModal.classList.remove("is-open");
         successModal.setAttribute("aria-hidden", "true");
         successModal.inert = true;
@@ -4282,6 +4355,9 @@
       // Configure PDF.js worker
       if (window.pdfjsLib) {
         pdfjsLib.GlobalWorkerOptions.workerSrc = "./js/pdf.worker.min.js";
+        if (pdfjsLib.setVerbosityLevel && pdfjsLib.VerbosityLevel) {
+          pdfjsLib.setVerbosityLevel(pdfjsLib.VerbosityLevel.ERRORS);
+        }
       }
 
       // Responsive document renderer (handles PDF canvas rendering and image loading)
@@ -4448,6 +4524,9 @@
       }
 
       function closeCertModal() {
+        if (certModal.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
         certModal.classList.remove("open");
         certModal.setAttribute("aria-hidden", "true");
         certModal.inert = true;
@@ -4511,6 +4590,9 @@
 
       function closeResumeModal() {
         if (!resumeModal) return;
+        if (resumeModal.contains(document.activeElement)) {
+          document.activeElement.blur();
+        }
         resumeModal.classList.remove("open");
         resumeModal.setAttribute("aria-hidden", "true");
         resumeModal.inert = true;
