@@ -4403,7 +4403,11 @@
       });
 
       // Configure PDF.js worker and canvas defaults to suppress Chrome readback warnings
+      let pdfJsVerbosity = 0;
       if (window.pdfjsLib) {
+        pdfJsVerbosity = pdfjsLib.VerbosityLevel
+          ? pdfjsLib.VerbosityLevel.ERRORS
+          : 0;
         const originalGetContext = HTMLCanvasElement.prototype.getContext;
         if (!HTMLCanvasElement.prototype.__pdfjsPatchedContext) {
           HTMLCanvasElement.prototype.getContext = function (type, attrs) {
@@ -4423,7 +4427,7 @@
         }
 
         if (pdfjsLib.setVerbosityLevel && pdfjsLib.VerbosityLevel) {
-          pdfjsLib.setVerbosityLevel(pdfjsLib.VerbosityLevel.ERRORS);
+          pdfjsLib.setVerbosityLevel(pdfJsVerbosity);
         }
       }
 
@@ -4447,6 +4451,7 @@
         if (isPdf && window.pdfjsLib) {
           const loadingTask = pdfjsLib.getDocument({
             url: fileUrl,
+            verbosity: pdfJsVerbosity,
             disableWorker: true,
           });
           loadingTask.promise
@@ -4607,6 +4612,7 @@
             pdfjsLib
               .getDocument({
                 url: fileUrl,
+                verbosity: pdfJsVerbosity,
                 disableWorker: true,
               })
               .promise.then((pdf) => pdf.getPage(1))
