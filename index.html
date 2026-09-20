@@ -19,6 +19,7 @@
       html {
         scroll-behavior: smooth;
         scroll-padding-top: 80px; /* Offset to prevent fixed navbar from covering section titles */
+        overflow-x: hidden;
       }
 
       body {
@@ -34,7 +35,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -44,13 +45,13 @@
       }
 
       canvas {
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         object-fit: cover;
       }
 
       /* Nav */
-      nav {
+      .top-nav {
         position: fixed !important;
         top: 0;
         left: 0;
@@ -80,6 +81,7 @@
         letter-spacing: -0.5px;
         color: #fff;
         text-decoration: none;
+        white-space: nowrap;
         transition:
           transform 0.25s ease,
           color 0.25s ease;
@@ -105,10 +107,18 @@
         font-size: 0.98rem;
         font-weight: 500;
         position: relative;
-        padding: 0.3rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0.4rem 0.75rem;
+        border: 1px solid rgba(255, 87, 34, 0.45);
+        border-radius: 6px;
         transition:
           color 0.25s ease,
-          transform 0.25s ease;
+          transform 0.25s ease,
+          border-color 0.25s ease,
+          background 0.25s ease;
         letter-spacing: 0.2px;
       }
       .nav-links a::after {
@@ -126,6 +136,8 @@
       .nav-links a:hover {
         color: #ff7849;
         transform: translateY(-1px);
+        border-color: #ff5722;
+        background: rgba(255, 87, 34, 0.1);
       }
       .nav-links a:hover::after {
         width: 100%;
@@ -445,6 +457,10 @@
         box-shadow:
           0 18px 40px rgba(0, 0, 0, 0.55),
           0 0 25px rgba(255, 87, 34, 0.08);
+      }
+
+      .card a {
+        overflow-wrap: anywhere;
       }
 
       .card h3 {
@@ -1363,7 +1379,7 @@
 
       /* Responsive design */
       @media (max-width: 1024px) {
-        nav {
+        .top-nav {
           padding: 1rem 5%;
         }
 
@@ -1384,25 +1400,31 @@
         }
 
         .nav-links.active {
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           position: absolute;
           top: 100%;
           left: 0;
-          width: 100%;
+          right: 0;
+          width: auto;
           background: rgba(0, 0, 0, 0.96);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          padding: 2rem 5%;
+          padding: 0.7rem 5% 0.85rem;
           box-sizing: border-box;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          gap: 1.5rem;
+          gap: 0.35rem 1.5rem;
           z-index: 99;
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
         }
 
         .nav-links a {
-          font-size: 1.1rem;
-          padding: 0.4rem 0;
+          font-size: 0.95rem;
+          padding: 0.2rem 0;
+        }
+
+        .nav-links a:nth-child(5) {
+          grid-column: 1 / -1;
         }
 
         .hero-grid {
@@ -1441,7 +1463,7 @@
       }
 
       @media (min-width: 769px) and (max-width: 1024px) {
-        nav {
+        .top-nav {
           padding: 0.9rem 3%;
         }
 
@@ -1522,7 +1544,21 @@
         transition: all 0.3s ease;
       }
 
+      @media (max-width: 1024px) {
+        .burger-menu {
+          display: flex;
+        }
+      }
+
       @media (max-width: 768px) {
+        .top-nav {
+          padding: 0.8rem 1rem;
+        }
+
+        .nav-right {
+          gap: 0.75rem;
+        }
+
         .btn {
           padding: 0.38rem 0.45rem 0.38rem 1.1rem;
           font-size: 0.88rem;
@@ -1593,6 +1629,12 @@
           flex-wrap: nowrap;
           padding-bottom: 0.6rem;
           -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .cert-tabs::-webkit-scrollbar {
+          display: none;
         }
 
         .cert-tab {
@@ -1739,21 +1781,21 @@
 
         /* Fixed Mobile Bottom Navigation Bar */
         body {
-          padding-bottom: 0;
+          padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px));
         }
 
         footer {
-          padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+          padding-bottom: 2.5rem;
         }
 
         .mobile-bottom-nav {
           display: flex;
           position: fixed;
-          top: auto !important;
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 62px;
+          min-height: 62px;
+          height: calc(62px + env(safe-area-inset-bottom, 0px));
           background: rgba(10, 10, 15, 0.96) !important;
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
@@ -1827,7 +1869,7 @@
       <canvas id="scroll-canvas" width="1280" height="720"></canvas>
     </div>
 
-    <nav>
+    <nav class="top-nav">
       <div class="logo">Ahad Khan</div>
       <div class="nav-right">
         <div class="nav-links" id="nav-links">
@@ -3788,6 +3830,7 @@
       role="dialog"
       aria-modal="true"
       aria-hidden="true"
+      inert
     >
       <div class="cert-modal-backdrop" id="modal-backdrop"></div>
       <div class="cert-modal-content">
@@ -3836,6 +3879,7 @@
       aria-modal="true"
       aria-labelledby="resume-modal-title"
       aria-hidden="true"
+      inert
     >
       <div class="cert-modal-backdrop" id="resume-modal-backdrop"></div>
       <div class="cert-modal-content">
@@ -3957,6 +4001,7 @@
       aria-modal="true"
       aria-labelledby="contact-success-title"
       aria-hidden="true"
+      inert
     >
       <div class="contact-success-content">
         <div class="contact-success-icon" aria-hidden="true">&#10003;</div>
@@ -4135,9 +4180,11 @@
       const closeSuccessModal = () => {
         successModal.classList.remove("is-open");
         successModal.setAttribute("aria-hidden", "true");
+        successModal.inert = true;
       };
 
       const openSuccessModal = () => {
+        successModal.inert = false;
         successModal.classList.add("is-open");
         successModal.setAttribute("aria-hidden", "false");
         successClose.focus();
@@ -4380,6 +4427,7 @@
       const modalOpenTab = document.getElementById("modal-open-tab");
 
       function openCertModal(fileUrl, title, issuer, format) {
+        certModal.inert = false;
         modalTitle.textContent = title;
         modalIssuer.textContent = issuer;
         if (modalDownload) {
@@ -4402,6 +4450,7 @@
       function closeCertModal() {
         certModal.classList.remove("open");
         certModal.setAttribute("aria-hidden", "true");
+        certModal.inert = true;
         modalBody.innerHTML = "";
         document.body.style.overflow = "";
       }
@@ -4444,6 +4493,7 @@
 
       function openResumeModal() {
         if (!resumeModal) return;
+        resumeModal.inert = false;
         resumeModal.classList.add("open");
         resumeModal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
@@ -4463,6 +4513,7 @@
         if (!resumeModal) return;
         resumeModal.classList.remove("open");
         resumeModal.setAttribute("aria-hidden", "true");
+        resumeModal.inert = true;
         if (resumeModalBody) resumeModalBody.innerHTML = "";
         document.body.style.overflow = "";
       }
