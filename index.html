@@ -70,7 +70,9 @@
         will-change: transform;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
-        transition: padding 0.3s ease, background 0.3s ease;
+        transition:
+          padding 0.3s ease,
+          background 0.3s ease;
       }
       .logo {
         font-size: 1.55rem;
@@ -78,7 +80,9 @@
         letter-spacing: -0.5px;
         color: #fff;
         text-decoration: none;
-        transition: transform 0.25s ease, color 0.25s ease;
+        transition:
+          transform 0.25s ease,
+          color 0.25s ease;
         display: inline-block;
       }
       .logo:hover {
@@ -102,7 +106,9 @@
         font-weight: 500;
         position: relative;
         padding: 0.3rem 0;
-        transition: color 0.25s ease, transform 0.25s ease;
+        transition:
+          color 0.25s ease,
+          transform 0.25s ease;
         letter-spacing: 0.2px;
       }
       .nav-links a::after {
@@ -135,10 +141,11 @@
         font-weight: 600;
         font-size: 0.95rem;
         text-decoration: none;
-        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-                    box-shadow 0.25s ease,
-                    background 0.25s ease,
-                    color 0.25s ease;
+        transition:
+          transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.25s ease,
+          background 0.25s ease,
+          color 0.25s ease;
         cursor: pointer;
         border: none;
       }
@@ -159,7 +166,9 @@
         justify-content: center;
         font-size: 14px;
         margin-left: 0.8rem;
-        transition: transform 0.25s ease, background 0.25s ease;
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease;
       }
       .btn:hover .icon {
         transform: translateX(3px);
@@ -246,12 +255,17 @@
         padding: 3rem;
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
       .hero-top:hover {
         transform: translateY(-4px);
         border-color: rgba(255, 87, 34, 0.45);
-        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 87, 34, 0.08);
+        box-shadow:
+          0 16px 36px rgba(0, 0, 0, 0.6),
+          0 0 20px rgba(255, 87, 34, 0.08);
       }
       .hero-achievements-card {
         display: flex;
@@ -265,13 +279,20 @@
         border-radius: 20px;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 25px rgba(255, 87, 34, 0.05);
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.6),
+          inset 0 0 25px rgba(255, 87, 34, 0.05);
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
       .hero-achievements-card:hover {
         transform: translateY(-4px);
         border-color: rgba(255, 87, 34, 0.65);
-        box-shadow: 0 16px 40px rgba(255, 87, 34, 0.25), inset 0 0 30px rgba(255, 87, 34, 0.08);
+        box-shadow:
+          0 16px 40px rgba(255, 87, 34, 0.25),
+          inset 0 0 30px rgba(255, 87, 34, 0.08);
       }
       .hero-achievements-card::before {
         content: "";
@@ -280,7 +301,11 @@
         right: -60px;
         width: 180px;
         height: 180px;
-        background: radial-gradient(circle, rgba(255, 87, 34, 0.25) 0%, transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(255, 87, 34, 0.25) 0%,
+          transparent 70%
+        );
         border-radius: 50%;
         pointer-events: none;
       }
@@ -308,8 +333,15 @@
         animation: pulseDot 2s infinite ease-in-out;
       }
       @keyframes pulseDot {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(0.7); opacity: 0.4; }
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(0.7);
+          opacity: 0.4;
+        }
       }
       .hero-achieve-title {
         font-size: 2.15rem;
@@ -324,6 +356,8 @@
         font-size: 1.12rem;
         line-height: 1.65;
         margin: 0 0 1.5rem 0;
+        text-align: justify;
+        text-justify: inter-word;
       }
       .hero-achieve-highlights {
         display: grid;
@@ -341,7 +375,10 @@
         border-radius: 12px;
         font-size: 0.92rem;
         color: #f3f4f6;
-        transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          border-color 0.25s ease;
       }
       .achieve-pill:hover {
         background: rgba(255, 87, 34, 0.14);
@@ -359,7 +396,10 @@
         width: fit-content;
         padding: 0.55rem 0.6rem 0.55rem 1.5rem;
         font-size: 0.98rem;
-        transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.25s ease !important;
+        transition:
+          transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.25s ease,
+          background 0.25s ease !important;
       }
       .hero-achieve-btn:hover {
         background: #e64a19 !important;
@@ -391,12 +431,20 @@
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 20px;
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
       .card:hover {
         transform: translateY(-5px);
         border-color: rgba(255, 87, 34, 0.45);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(255, 87, 34, 0.08);
+        box-shadow:
+          0 18px 40px rgba(0, 0, 0, 0.55),
+          0 0 25px rgba(255, 87, 34, 0.08);
       }
 
       .card h3 {
@@ -424,7 +472,9 @@
       }
 
       .card p {
-        text-align: left;
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
       }
 
       .card ul {
@@ -436,6 +486,8 @@
         margin-bottom: 0.85rem;
         line-height: 1.65;
         color: #f3f4f6;
+        text-align: justify;
+        text-justify: inter-word;
       }
 
       .tags {
@@ -453,7 +505,12 @@
         font-weight: 500;
         color: #f3f4f6;
         background: rgba(255, 255, 255, 0.05);
-        transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          border-color 0.25s ease,
+          color 0.25s ease,
+          box-shadow 0.25s ease;
         cursor: default;
       }
       .tag:hover {
@@ -489,7 +546,9 @@
         padding-bottom: 2px;
         font-size: 1.15rem;
         font-weight: 500;
-        transition: color 0.3s ease, transform 0.2s ease;
+        transition:
+          color 0.3s ease,
+          transform 0.2s ease;
       }
       .contact-info a:hover {
         color: #ff7849;
@@ -536,12 +595,17 @@
         border-radius: 20px;
         max-width: 480px;
         margin-left: auto;
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
       .contact-card:hover {
         transform: translateY(-4px);
         border-color: rgba(255, 87, 34, 0.4);
-        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 87, 34, 0.08);
+        box-shadow:
+          0 16px 36px rgba(0, 0, 0, 0.6),
+          0 0 20px rgba(255, 87, 34, 0.08);
       }
 
       .contact-card h3 {
@@ -578,7 +642,10 @@
         color: #fff;
         font-family: "Outfit", sans-serif;
         outline: none;
-        transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
+        transition:
+          border-color 0.25s,
+          background-color 0.25s,
+          box-shadow 0.25s;
       }
 
       .form-field input:focus,
@@ -603,7 +670,10 @@
         font-weight: 600;
         width: 100%;
         cursor: pointer;
-        transition: background 0.3s, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s;
+        transition:
+          background 0.3s,
+          transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.25s;
         font-family: "Outfit", sans-serif;
       }
 
@@ -640,32 +710,36 @@
       }
 
       .cert-tab {
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        color: #eee;
-        padding: 0.65rem 1.3rem;
+        background: rgba(18, 18, 24, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 0.65rem 1.35rem;
         border-radius: 30px;
         font-size: 0.95rem;
-        font-weight: 500;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.25s ease;
         font-family: "Outfit", sans-serif;
         user-select: none;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
       }
 
       .cert-tab:hover {
-        background: rgba(255, 87, 34, 0.18);
-        border-color: rgba(255, 87, 34, 0.55);
+        background: rgba(255, 87, 34, 0.25);
+        border-color: rgba(255, 87, 34, 0.65);
         color: #fff;
         transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 87, 34, 0.3);
       }
 
       .cert-tab.active {
         background: #ff5722;
         border-color: #ff5722;
         color: #fff;
-        font-weight: 600;
-        box-shadow: 0 4px 16px rgba(255, 87, 34, 0.4);
+        font-weight: 700;
+        box-shadow: 0 4px 16px rgba(255, 87, 34, 0.45);
       }
 
       .cert-grid {
@@ -684,7 +758,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
         position: relative;
         overflow: hidden;
       }
@@ -692,7 +769,9 @@
       .cert-card:hover {
         transform: translateY(-6px);
         border-color: rgba(255, 87, 34, 0.45);
-        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 22px rgba(255, 87, 34, 0.12);
+        box-shadow:
+          0 14px 34px rgba(0, 0, 0, 0.6),
+          0 0 22px rgba(255, 87, 34, 0.12);
       }
 
       .cert-card-header {
@@ -756,12 +835,20 @@
         align-items: center;
         justify-content: center;
         gap: 0.6rem;
-        background: linear-gradient(145deg, rgba(25, 25, 35, 0.8), rgba(15, 15, 20, 0.95));
+        background: linear-gradient(
+          145deg,
+          rgba(25, 25, 35, 0.8),
+          rgba(15, 15, 20, 0.95)
+        );
         transition: background 0.3s ease;
       }
 
       .cert-card:hover .cert-doc-preview {
-        background: linear-gradient(145deg, rgba(35, 30, 40, 0.9), rgba(20, 20, 30, 0.95));
+        background: linear-gradient(
+          145deg,
+          rgba(35, 30, 40, 0.9),
+          rgba(20, 20, 30, 0.95)
+        );
       }
 
       .doc-icon-svg {
@@ -810,7 +897,9 @@
         align-items: center;
         gap: 0.4rem;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        transition: transform 0.2s ease, background 0.2s ease;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
       }
       .overlay-btn:hover {
         background: #e64a19;
@@ -843,6 +932,8 @@
         color: rgba(255, 255, 255, 0.8);
         line-height: 1.5;
         margin: 0;
+        text-align: justify;
+        text-justify: inter-word;
       }
 
       .cert-actions {
@@ -928,18 +1019,26 @@
         border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 20px;
         width: 100%;
-        max-width: 960px;
-        max-height: 90vh;
+        max-width: 1080px;
+        max-height: 92vh;
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 87, 34, 0.15);
+        box-shadow:
+          0 25px 60px rgba(0, 0, 0, 0.8),
+          0 0 35px rgba(255, 87, 34, 0.15);
         animation: modalScaleIn 0.25s ease-out;
       }
 
       @keyframes modalScaleIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
 
       .cert-modal-header {
@@ -948,7 +1047,13 @@
         align-items: center;
         padding: 1.2rem 1.8rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(20, 20, 28, 0.8);
+        background: rgba(20, 20, 28, 0.95);
+        position: relative;
+        gap: 1rem;
+      }
+
+      .cert-modal-info {
+        flex: 1;
       }
 
       .cert-modal-info h3 {
@@ -1005,6 +1110,7 @@
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
+        white-space: nowrap;
       }
 
       .modal-btn-download:hover {
@@ -1028,6 +1134,7 @@
         font-size: 1.4rem;
         cursor: pointer;
         transition: all 0.2s ease;
+        flex-shrink: 0;
       }
 
       .modal-close-btn:hover {
@@ -1038,29 +1145,101 @@
 
       .cert-modal-body {
         flex: 1;
-        overflow: auto;
-        padding: 1.5rem;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 1.2rem;
         background: #08080c;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         min-height: 480px;
+        box-sizing: border-box;
       }
 
-      .cert-modal-body img {
+      .cert-modal-body img,
+      .modal-doc-img {
         max-width: 100%;
-        max-height: 70vh;
+        max-height: 76vh;
+        width: auto;
+        height: auto;
         object-fit: contain;
         border-radius: 10px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        display: block;
+        margin: auto;
       }
 
-      .cert-modal-body iframe {
+      .modal-doc-canvas {
+        max-width: 100%;
+        height: auto !important;
+        border-radius: 8px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+        display: block;
+        margin: 0 auto;
+        background: #fff;
+      }
+
+      .cert-modal-body iframe,
+      .modal-doc-fallback {
         width: 100%;
-        height: 70vh;
+        height: 76vh;
         border: none;
         border-radius: 10px;
         background: #fff;
+        display: block;
+      }
+
+      .modal-loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: auto;
+        padding: 3rem 1rem;
+      }
+
+      .modal-spinner {
+        width: 42px;
+        height: 42px;
+        border: 3px solid rgba(255, 87, 34, 0.2);
+        border-top-color: #ff5722;
+        border-radius: 50%;
+        animation: modalSpin 0.8s linear infinite;
+      }
+
+      @keyframes modalSpin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .modal-mobile-helper {
+        display: none;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.6rem;
+      }
+      .mobile-open-pill {
+        background: rgba(255, 87, 34, 0.18);
+        border: 1px solid rgba(255, 87, 34, 0.5);
+        color: #ff7849;
+        padding: 0.45rem 1.1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .mobile-open-pill:hover {
+        background: #ff5722;
+        color: #fff;
+      }
+
+      /* Mobile Bottom Navigation (Hidden on desktop) */
+      .mobile-bottom-nav {
+        display: none;
       }
 
       /* Footer styling */
@@ -1277,16 +1456,76 @@
         }
 
         .cert-modal-header {
-          padding: 1rem;
+          padding: 0.85rem 3.5rem 0.8rem 1rem;
+          position: relative;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+
+        .cert-modal-info {
+          width: 100%;
+        }
+
+        .cert-modal-info h3 {
+          font-size: 1.15rem;
+          line-height: 1.35;
+          word-break: break-word;
+        }
+
+        .cert-modal-actions {
+          width: 100%;
+          justify-content: flex-start;
+          gap: 0.5rem;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+        }
+
+        .modal-close-btn {
+          position: absolute;
+          top: 0.75rem;
+          right: 0.75rem;
+          width: 34px;
+          height: 34px;
+          font-size: 1.3rem;
+        }
+
+        .modal-btn-download,
+        .cert-btn-open {
+          font-size: 0.8rem;
+          padding: 0.38rem 0.85rem;
+          white-space: nowrap;
+          border-radius: 20px;
         }
 
         .cert-modal-body {
-          padding: 0.8rem;
-          min-height: 350px;
+          padding: 0.6rem;
+          min-height: 280px;
+          max-height: 72vh;
+          overflow-y: auto;
+          overflow-x: hidden;
         }
 
-        .cert-modal-body iframe {
-          height: 60vh;
+        .modal-doc-canvas {
+          max-width: 100% !important;
+          height: auto !important;
+          margin: 0 auto !important;
+        }
+
+        .modal-doc-img {
+          max-width: 100% !important;
+          max-height: 65vh !important;
+          height: auto !important;
+          object-fit: contain !important;
+        }
+
+        .cert-modal-body iframe,
+        .modal-doc-fallback {
+          height: 68vh !important;
+        }
+
+        .modal-mobile-helper {
+          display: flex;
         }
 
         .card {
@@ -1348,6 +1587,82 @@
           margin: 0 auto 1.5rem auto !important;
           text-align: center !important;
         }
+
+        /* Fixed Mobile Bottom Navigation Bar */
+        body {
+          padding-bottom: 68px;
+        }
+
+        footer {
+          padding-bottom: 5.5rem;
+        }
+
+        .mobile-bottom-nav {
+          display: flex;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 62px;
+          background: rgba(10, 10, 15, 0.96);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-top: 1px solid rgba(255, 255, 255, 0.12);
+          z-index: 99998;
+          justify-content: space-around;
+          align-items: center;
+          padding: 0.3rem 0.3rem calc(0.3rem + env(safe-area-inset-bottom, 0px))
+            0.3rem;
+          box-sizing: border-box;
+          box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .bottom-nav-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          color: #a0a0a8;
+          text-decoration: none;
+          font-size: 0.68rem;
+          font-weight: 500;
+          gap: 2px;
+          flex: 1;
+          padding: 4px 0;
+          transition:
+            color 0.2s ease,
+            transform 0.2s ease;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-family: "Outfit", sans-serif;
+        }
+
+        .bottom-nav-item svg {
+          width: 19px;
+          height: 19px;
+          fill: currentColor;
+          transition:
+            fill 0.2s ease,
+            transform 0.2s ease;
+        }
+
+        .bottom-nav-item:hover,
+        .bottom-nav-item:active,
+        .bottom-nav-item.active {
+          color: #ff5722;
+        }
+
+        .bottom-nav-item:hover svg,
+        .bottom-nav-item:active svg,
+        .bottom-nav-item.active svg {
+          fill: #ff5722;
+          transform: translateY(-2px);
+        }
+
+        .bottom-nav-item span {
+          line-height: 1;
+        }
       }
     </style>
   </head>
@@ -1365,7 +1680,13 @@
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
           <a href="#certifications">Achievements &amp; Certifications</a>
-          <a href="./Ahad_Khan_Resume.pdf" class="resume-modal-trigger" target="_blank" download="Ahad_Khan_Resume.pdf">Resume</a>
+          <a
+            href="./Ahad_Khan_Resume.pdf"
+            class="resume-modal-trigger"
+            target="_blank"
+            download="Ahad_Khan_Resume.pdf"
+            >Resume</a
+          >
         </div>
         <a href="#contact" class="btn"
           >Get in touch <span class="icon">&rarr;</span></a
@@ -1399,11 +1720,15 @@
         <div class="hero-achievements-card">
           <div>
             <div class="hero-badge">
-              <span class="badge-dot"></span> 26 Verified Credentials &amp; Honors
+              <span class="badge-dot"></span> 25+ Verified Credentials &amp;
+              Honors
             </div>
-            <h2 class="hero-achieve-title">Achievements &amp; Certifications</h2>
+            <h2 class="hero-achieve-title">
+              Achievements &amp; Certifications
+            </h2>
             <p class="hero-achieve-desc">
-              Explore verified technical credentials, hackathons, internships, and leadership honors across Full-Stack MERN, AI, and Cloud.
+              Explore verified technical credentials, hackathons, internships,
+              and leadership honors across Full-Stack MERN, AI, and Cloud.
             </p>
             <div class="hero-achieve-highlights">
               <div class="achieve-pill">
@@ -1859,18 +2184,32 @@
       <div class="cert-section-header">
         <div class="section-title">Achievements &amp; Certifications</div>
         <p class="cert-subtitle">
-          A verified portfolio of 25+ industry credentials, hackathon leadership recognitions, internships, and technical certifications across Full-Stack, Cyber Security, AI, and Hosting.
+          A verified portfolio of 25+ industry credentials, hackathon leadership
+          recognitions, internships, and technical certifications across
+          Full-Stack, Cyber Security, AI, and Hosting.
         </p>
       </div>
 
       <!-- Filter Tabs -->
       <div class="cert-tabs">
-        <button class="cert-tab active" data-category="all">All Credentials (26)</button>
-        <button class="cert-tab" data-category="dev">Full-Stack &amp; Web (6)</button>
-        <button class="cert-tab" data-category="hackathon">Hackathons (3)</button>
-        <button class="cert-tab" data-category="internship">Internships &amp; Industry (5)</button>
-        <button class="cert-tab" data-category="cyber-ai">Cyber Security &amp; AI (5)</button>
-        <button class="cert-tab" data-category="leadership">Leadership &amp; Hosting (7)</button>
+        <button class="cert-tab active" data-category="all">
+          All Credentials (25+)
+        </button>
+        <button class="cert-tab" data-category="dev">
+          Full-Stack &amp; Web (6)
+        </button>
+        <button class="cert-tab" data-category="hackathon">
+          Hackathons (3)
+        </button>
+        <button class="cert-tab" data-category="internship">
+          Internships &amp; Industry (5)
+        </button>
+        <button class="cert-tab" data-category="cyber-ai">
+          Cyber Security &amp; AI (5)
+        </button>
+        <button class="cert-tab" data-category="leadership">
+          Leadership &amp; Hosting (7)
+        </button>
       </div>
 
       <!-- Credentials Grid -->
@@ -1882,9 +2221,19 @@
               <span class="cert-badge">IIT Bombay</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/PostgreSQL.pdf" data-title="RDBMS PostgreSQL Training" data-issuer="Indian Institute of Technology (IIT Bombay)" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/PostgreSQL.pdf"
+              data-title="RDBMS PostgreSQL Training"
+              data-issuer="Indian Institute of Technology (IIT Bombay)"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">RDBMS PostgreSQL</span>
               </div>
               <div class="thumb-overlay">
@@ -1893,15 +2242,32 @@
             </div>
             <div class="cert-info">
               <h3 class="cert-title">RDBMS PostgreSQL Training</h3>
-              <p class="cert-issuer">Indian Institute of Technology (IIT Bombay)</p>
-              <p class="cert-highlight">Spoken Tutorial project covering relational database design, query optimization, and SQL.</p>
+              <p class="cert-issuer">
+                Indian Institute of Technology (IIT Bombay)
+              </p>
+              <p class="cert-highlight">
+                Spoken Tutorial project covering relational database design,
+                query optimization, and SQL.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/PostgreSQL.pdf" data-title="RDBMS PostgreSQL Training" data-issuer="Indian Institute of Technology (IIT Bombay)" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/PostgreSQL.pdf"
+              data-title="RDBMS PostgreSQL Training"
+              data-issuer="Indian Institute of Technology (IIT Bombay)"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/PostgreSQL.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/PostgreSQL.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -1912,9 +2278,19 @@
               <span class="cert-badge">IIT Bombay</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/Suite_Calc.pdf" data-title="LibreOffice Suite Calc Training" data-issuer="Indian Institute of Technology (IIT Bombay)" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Suite_Calc.pdf"
+              data-title="LibreOffice Suite Calc Training"
+              data-issuer="Indian Institute of Technology (IIT Bombay)"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">LibreOffice Suite Calc</span>
               </div>
               <div class="thumb-overlay">
@@ -1923,15 +2299,32 @@
             </div>
             <div class="cert-info">
               <h3 class="cert-title">LibreOffice Suite Calc Training</h3>
-              <p class="cert-issuer">Indian Institute of Technology (IIT Bombay)</p>
-              <p class="cert-highlight">Advanced spreadsheet analytics, data models, and statistical workflow calculations.</p>
+              <p class="cert-issuer">
+                Indian Institute of Technology (IIT Bombay)
+              </p>
+              <p class="cert-highlight">
+                Advanced spreadsheet analytics, data models, and statistical
+                workflow calculations.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/Suite_Calc.pdf" data-title="LibreOffice Suite Calc Training" data-issuer="Indian Institute of Technology (IIT Bombay)" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Suite_Calc.pdf"
+              data-title="LibreOffice Suite Calc Training"
+              data-issuer="Indian Institute of Technology (IIT Bombay)"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/Suite_Calc.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/Suite_Calc.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -1942,9 +2335,19 @@
               <span class="cert-badge">IIT Kharagpur</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/Launched_Certificate.pdf" data-title="Web Development Mentorship" data-issuer="Launched Global &amp; Kshitij (IIT Kharagpur)" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Launched_Certificate.pdf"
+              data-title="Web Development Mentorship"
+              data-issuer="Launched Global &amp; Kshitij (IIT Kharagpur)"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Web Dev Mentorship</span>
               </div>
               <div class="thumb-overlay">
@@ -1953,15 +2356,32 @@
             </div>
             <div class="cert-info">
               <h3 class="cert-title">Web Development Mentorship</h3>
-              <p class="cert-issuer">Launched Global &amp; Kshitij (IIT Kharagpur)</p>
-              <p class="cert-highlight">Rigorous mentorship under IIT Kharagpur fest covering modern web development standards.</p>
+              <p class="cert-issuer">
+                Launched Global &amp; Kshitij (IIT Kharagpur)
+              </p>
+              <p class="cert-highlight">
+                Rigorous mentorship under IIT Kharagpur fest covering modern web
+                development standards.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/Launched_Certificate.pdf" data-title="Web Development Mentorship" data-issuer="Launched Global &amp; Kshitij (IIT Kharagpur)" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Launched_Certificate.pdf"
+              data-title="Web Development Mentorship"
+              data-issuer="Launched Global &amp; Kshitij (IIT Kharagpur)"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/Launched_Certificate.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/Launched_Certificate.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -1972,9 +2392,19 @@
               <span class="cert-badge">Full Stack</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/FSD_completion.pdf" data-title="Full Stack Development (MERN)" data-issuer="Full Stack MERN Developer Program" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/FSD_completion.pdf"
+              data-title="Full Stack Development (MERN)"
+              data-issuer="Full Stack MERN Developer Program"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Full Stack (MERN)</span>
               </div>
               <div class="thumb-overlay">
@@ -1984,14 +2414,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Full Stack Development (MERN)</h3>
               <p class="cert-issuer">Full Stack MERN Developer Program</p>
-              <p class="cert-highlight">End-to-end full stack development mastering React, Node.js, Express, and MongoDB.</p>
+              <p class="cert-highlight">
+                End-to-end full stack development mastering React, Node.js,
+                Express, and MongoDB.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/FSD_completion.pdf" data-title="Full Stack Development (MERN)" data-issuer="Full Stack MERN Developer Program" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/FSD_completion.pdf"
+              data-title="Full Stack Development (MERN)"
+              data-issuer="Full Stack MERN Developer Program"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/FSD_completion.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/FSD_completion.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2002,8 +2447,18 @@
               <span class="cert-badge">DSA &amp; Problem Solving</span>
               <span class="cert-type-tag">JPG</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/Algo_uniCertificate.jpg" data-title="Algo University Certification" data-issuer="AlgoUniversity" data-format="img">
-              <img src="./Achievements_&_Certifications/Algo_uniCertificate.jpg" alt="Algo University Certification" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Algo_uniCertificate.jpg"
+              data-title="Algo University Certification"
+              data-issuer="AlgoUniversity"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/Algo_uniCertificate.jpg"
+                alt="Algo University Certification"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Certificate ↗</span>
               </div>
@@ -2011,14 +2466,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Algo University Certification</h3>
               <p class="cert-issuer">AlgoUniversity</p>
-              <p class="cert-highlight">Data structures, algorithmic problem solving, and computational thinking mastery.</p>
+              <p class="cert-highlight">
+                Data structures, algorithmic problem solving, and computational
+                thinking mastery.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/Algo_uniCertificate.jpg" data-title="Algo University Certification" data-issuer="AlgoUniversity" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Algo_uniCertificate.jpg"
+              data-title="Algo University Certification"
+              data-issuer="AlgoUniversity"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/Algo_uniCertificate.jpg" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/Algo_uniCertificate.jpg"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2029,8 +2499,18 @@
               <span class="cert-badge">Degree</span>
               <span class="cert-type-tag">JPG</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/BCA.jpg" data-title="Bachelor of Computer Applications" data-issuer="LPCPS / University of Lucknow" data-format="img">
-              <img src="./Achievements_&_Certifications/BCA.jpg" alt="Bachelor of Computer Applications" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/BCA.jpg"
+              data-title="Bachelor of Computer Applications"
+              data-issuer="LPCPS / University of Lucknow"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/BCA.jpg"
+                alt="Bachelor of Computer Applications"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Certificate ↗</span>
               </div>
@@ -2038,14 +2518,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Bachelor of Computer Applications</h3>
               <p class="cert-issuer">LPCPS / University of Lucknow</p>
-              <p class="cert-highlight">Graduated with First Division honors in Computer Applications and Software Systems.</p>
+              <p class="cert-highlight">
+                Graduated with First Division honors in Computer Applications
+                and Software Systems.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/BCA.jpg" data-title="Bachelor of Computer Applications" data-issuer="LPCPS / University of Lucknow" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/BCA.jpg"
+              data-title="Bachelor of Computer Applications"
+              data-issuer="LPCPS / University of Lucknow"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/BCA.jpg" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/BCA.jpg"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2056,8 +2551,18 @@
               <span class="cert-badge">Govt. of India</span>
               <span class="cert-type-tag">JPG</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/SIH25.jpg" data-title="Smart India Hackathon 2025" data-issuer="Ministry of Education &amp; AICTE" data-format="img">
-              <img src="./Achievements_&_Certifications/SIH25.jpg" alt="Smart India Hackathon 2025" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/SIH25.jpg"
+              data-title="Smart India Hackathon 2025"
+              data-issuer="SRMCEM"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/SIH25.jpg"
+                alt="Smart India Hackathon 2025"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Certificate ↗</span>
               </div>
@@ -2065,14 +2570,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Smart India Hackathon 2025</h3>
               <p class="cert-issuer">SRMCEM</p>
-              <p class="cert-highlight">National level hackathon innovating real-world technological solutions under sprint deadlines.</p>
+              <p class="cert-highlight">
+                National level hackathon innovating real-world technological
+                solutions under sprint deadlines.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/SIH25.jpg" data-title="Smart India Hackathon 2025" data-issuer="Ministry of Education &amp; AICTE" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/SIH25.jpg"
+              data-title="Smart India Hackathon 2025"
+              data-issuer="SRMCEM"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/SIH25.jpg" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/SIH25.jpg"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2083,8 +2603,18 @@
               <span class="cert-badge">National Level</span>
               <span class="cert-type-tag">JPG</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/SIH26.jpg" data-title="Smart India Hackathon Recognition" data-issuer="SRMCEM" data-format="img">
-              <img src="./Achievements_&_Certifications/SIH26.jpg" alt="Smart India Hackathon Recognition" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/SIH26.jpg"
+              data-title="Smart India Hackathon Recognition"
+              data-issuer="SRMCEM"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/SIH26.jpg"
+                alt="Smart India Hackathon Recognition"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Certificate ↗</span>
               </div>
@@ -2092,14 +2622,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Smart India Hackathon Recognition</h3>
               <p class="cert-issuer">SRMCEM</p>
-              <p class="cert-highlight">Competitive hackathon solving problem statements with architecture design and rapid execution.</p>
+              <p class="cert-highlight">
+                Competitive hackathon solving problem statements with
+                architecture design and rapid execution.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/SIH26.jpg" data-title="Smart India Hackathon Recognition" data-issuer="SRMCEM" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/SIH26.jpg"
+              data-title="Smart India Hackathon Recognition"
+              data-issuer="SRMCEM"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/SIH26.jpg" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/SIH26.jpg"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2110,9 +2655,19 @@
               <span class="cert-badge">Team Leader</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/CodeRush.pdf" data-title="CodeRush 2.0 Hackathon Leader" data-issuer="BBD" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/CodeRush.pdf"
+              data-title="CodeRush 2.0 Hackathon Leader"
+              data-issuer="BBD"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">CodeRush 2.0 Leader</span>
               </div>
               <div class="thumb-overlay">
@@ -2122,14 +2677,29 @@
             <div class="cert-info">
               <h3 class="cert-title">CodeRush 2.0 Hackathon Leader</h3>
               <p class="cert-issuer">BBD</p>
-              <p class="cert-highlight">Led team in high-intensity 24hr sprint to build, test, and present a functional application.</p>
+              <p class="cert-highlight">
+                Led team in high-intensity 24hr sprint to build, test, and
+                present a functional application.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/CodeRush.pdf" data-title="CodeRush 2.0 Hackathon Leader" data-issuer="BBD" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/CodeRush.pdf"
+              data-title="CodeRush 2.0 Hackathon Leader"
+              data-issuer="BBD"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/CodeRush.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/CodeRush.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2140,9 +2710,19 @@
               <span class="cert-badge">Offer Letter</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/InternshipOfferletter.pdf" data-title="Full-Stack Developer Internship Offer" data-issuer="Techiguru" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/InternshipOfferletter.pdf"
+              data-title="Full-Stack Developer Internship Offer"
+              data-issuer="Techiguru"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Techiguru Offer Letter</span>
               </div>
               <div class="thumb-overlay">
@@ -2152,14 +2732,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Full-Stack Developer Offer</h3>
               <p class="cert-issuer">Techiguru</p>
-              <p class="cert-highlight">Selected for hands-on full-stack development working on production React &amp; Node modules.</p>
+              <p class="cert-highlight">
+                Selected for hands-on full-stack development working on
+                production React &amp; Node modules.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/InternshipOfferletter.pdf" data-title="Full-Stack Developer Internship Offer" data-issuer="Techiguru" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/InternshipOfferletter.pdf"
+              data-title="Full-Stack Developer Internship Offer"
+              data-issuer="Techiguru"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/InternshipOfferletter.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/InternshipOfferletter.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2170,9 +2765,19 @@
               <span class="cert-badge">Completion</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/Internship_Complettion.pdf" data-title="Software Development Internship" data-issuer="Launched Global" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Internship_Complettion.pdf"
+              data-title="Software Development Internship"
+              data-issuer="Launched Global"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Internship Completion</span>
               </div>
               <div class="thumb-overlay">
@@ -2182,14 +2787,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Software Development Internship</h3>
               <p class="cert-issuer">Launched Global</p>
-              <p class="cert-highlight">Delivered production-ready modules, responsive UI design, and backend RESTful integrations.</p>
+              <p class="cert-highlight">
+                Delivered production-ready modules, responsive UI design, and
+                backend RESTful integrations.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/Internship_Complettion.pdf" data-title="Software Development Internship" data-issuer="Launched Global" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Internship_Complettion.pdf"
+              data-title="Software Development Internship"
+              data-issuer="Launched Global"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/Internship_Complettion.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/Internship_Complettion.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2200,9 +2820,19 @@
               <span class="cert-badge">Internship</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/Launched_Internship.pdf" data-title="Web Developer Intern Certificate" data-issuer="Launched Global" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Launched_Internship.pdf"
+              data-title="Web Developer Intern Certificate"
+              data-issuer="Launched Global"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Launched Global Intern</span>
               </div>
               <div class="thumb-overlay">
@@ -2212,14 +2842,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Web Developer Intern Certificate</h3>
               <p class="cert-issuer">Launched Global</p>
-              <p class="cert-highlight">Engineered 3+ full-stack web projects with 7+ modern technologies and responsive styling.</p>
+              <p class="cert-highlight">
+                Engineered 3+ full-stack web projects with 7+ modern
+                technologies and responsive styling.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/Launched_Internship.pdf" data-title="Web Developer Intern Certificate" data-issuer="Launched Global" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Launched_Internship.pdf"
+              data-title="Web Developer Intern Certificate"
+              data-issuer="Launched Global"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/Launched_Internship.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/Launched_Internship.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2230,9 +2875,19 @@
               <span class="cert-badge">TCS iON</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/tcs.pdf" data-title="TCS Career Edge - Young Professional" data-issuer="Tata Consultancy Services (TCS)" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/tcs.pdf"
+              data-title="TCS Career Edge - Young Professional"
+              data-issuer="Tata Consultancy Services (TCS)"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">TCS Career Edge</span>
               </div>
               <div class="thumb-overlay">
@@ -2242,14 +2897,29 @@
             <div class="cert-info">
               <h3 class="cert-title">TCS Career Edge - Young Professional</h3>
               <p class="cert-issuer">Tata Consultancy Services (TCS)</p>
-              <p class="cert-highlight">Business communication, workplace effectiveness, and corporate IT preparedness.</p>
+              <p class="cert-highlight">
+                Business communication, workplace effectiveness, and corporate
+                IT preparedness.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/tcs.pdf" data-title="TCS Career Edge - Young Professional" data-issuer="Tata Consultancy Services (TCS)" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/tcs.pdf"
+              data-title="TCS Career Edge - Young Professional"
+              data-issuer="Tata Consultancy Services (TCS)"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/tcs.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/tcs.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2260,9 +2930,19 @@
               <span class="cert-badge">TCS iON</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/tcs2.pdf" data-title="TCS Industry Ready Certification" data-issuer="Tata Consultancy Services (TCS)" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/tcs2.pdf"
+              data-title="TCS Industry Ready Certification"
+              data-issuer="Tata Consultancy Services (TCS)"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">TCS Industry Ready</span>
               </div>
               <div class="thumb-overlay">
@@ -2272,14 +2952,29 @@
             <div class="cert-info">
               <h3 class="cert-title">TCS Industry Ready Certification</h3>
               <p class="cert-issuer">Tata Consultancy Services (TCS)</p>
-              <p class="cert-highlight">Foundational knowledge in agile project environments and enterprise technology stacks.</p>
+              <p class="cert-highlight">
+                Foundational knowledge in agile project environments and
+                enterprise technology stacks.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/tcs2.pdf" data-title="TCS Industry Ready Certification" data-issuer="Tata Consultancy Services (TCS)" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/tcs2.pdf"
+              data-title="TCS Industry Ready Certification"
+              data-issuer="Tata Consultancy Services (TCS)"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/tcs2.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/tcs2.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2290,9 +2985,19 @@
               <span class="cert-badge">Cyber Security</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/cyberSecurity.pdf" data-title="Cyber Security Certified Course" data-issuer="LPCPS" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/cyberSecurity.pdf"
+              data-title="Cyber Security Certified Course"
+              data-issuer="LPCPS"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Cyber Security Course</span>
               </div>
               <div class="thumb-overlay">
@@ -2302,14 +3007,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Cyber Security Certified Course</h3>
               <p class="cert-issuer">LPCPS</p>
-              <p class="cert-highlight">In-depth program covering web application security, cryptography, and network defense.</p>
+              <p class="cert-highlight">
+                In-depth program covering web application security,
+                cryptography, and network defense.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/cyberSecurity.pdf" data-title="Cyber Security Certified Course" data-issuer="LPCPS" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/cyberSecurity.pdf"
+              data-title="Cyber Security Certified Course"
+              data-issuer="LPCPS"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/cyberSecurity.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/cyberSecurity.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2320,9 +3040,19 @@
               <span class="cert-badge">Security</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/threatDetection.pdf" data-title="Threat Detection &amp; Incident Response" data-issuer="Cybersecurity Training Program" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/threatDetection.pdf"
+              data-title="Threat Detection &amp; Incident Response"
+              data-issuer="Cybersecurity Training Program"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Threat Detection</span>
               </div>
               <div class="thumb-overlay">
@@ -2332,14 +3062,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Threat Detection &amp; Response</h3>
               <p class="cert-issuer">Cybersecurity Training Program</p>
-              <p class="cert-highlight">Security operations, anomaly detection, vulnerability analysis, and incident mitigation.</p>
+              <p class="cert-highlight">
+                Security operations, anomaly detection, vulnerability analysis,
+                and incident mitigation.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/threatDetection.pdf" data-title="Threat Detection &amp; Incident Response" data-issuer="Cybersecurity Training Program" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/threatDetection.pdf"
+              data-title="Threat Detection &amp; Incident Response"
+              data-issuer="Cybersecurity Training Program"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/threatDetection.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/threatDetection.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2350,9 +3095,19 @@
               <span class="cert-badge">AI &amp; Robotics</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/AiNRobotics.pdf" data-title="Artificial Intelligence &amp; Robotics" data-issuer="AI &amp; Robotics Workshop" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/AiNRobotics.pdf"
+              data-title="Artificial Intelligence &amp; Robotics"
+              data-issuer="AI &amp; Robotics Workshop"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">AI &amp; Robotics</span>
               </div>
               <div class="thumb-overlay">
@@ -2362,14 +3117,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Artificial Intelligence &amp; Robotics</h3>
               <p class="cert-issuer">AI &amp; Robotics Workshop</p>
-              <p class="cert-highlight">Intelligent systems, autonomous agents, neural models, and robotic vision principles.</p>
+              <p class="cert-highlight">
+                Intelligent systems, autonomous agents, neural models, and
+                robotic vision principles.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/AiNRobotics.pdf" data-title="Artificial Intelligence &amp; Robotics" data-issuer="AI &amp; Robotics Workshop" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/AiNRobotics.pdf"
+              data-title="Artificial Intelligence &amp; Robotics"
+              data-issuer="AI &amp; Robotics Workshop"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/AiNRobotics.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/AiNRobotics.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2380,9 +3150,19 @@
               <span class="cert-badge">GenAI</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/be10x.pdf" data-title="AI Tools &amp; Prompt Engineering" data-issuer="be10x" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/be10x.pdf"
+              data-title="AI Tools &amp; Prompt Engineering"
+              data-issuer="be10x"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">be10x AI Tools</span>
               </div>
               <div class="thumb-overlay">
@@ -2392,14 +3172,29 @@
             <div class="cert-info">
               <h3 class="cert-title">AI Tools &amp; Prompt Engineering</h3>
               <p class="cert-issuer">be10x</p>
-              <p class="cert-highlight">Productivity acceleration using LLMs, AI coding assistants, and automated workflows.</p>
+              <p class="cert-highlight">
+                Productivity acceleration using LLMs, AI coding assistants, and
+                automated workflows.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/be10x.pdf" data-title="AI Tools &amp; Prompt Engineering" data-issuer="be10x" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/be10x.pdf"
+              data-title="AI Tools &amp; Prompt Engineering"
+              data-issuer="be10x"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/be10x.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/be10x.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2410,9 +3205,19 @@
               <span class="cert-badge">Automation</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/officeMaster.pdf" data-title="Office Master AI &amp; Automation" data-issuer="Office Master" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/officeMaster.pdf"
+              data-title="Office Master AI &amp; Automation"
+              data-issuer="Office Master"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Office Master AI</span>
               </div>
               <div class="thumb-overlay">
@@ -2422,14 +3227,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Office Master AI &amp; Automation</h3>
               <p class="cert-issuer">Office Master</p>
-              <p class="cert-highlight">Automating analytical reporting, document generation, and workflow optimization.</p>
+              <p class="cert-highlight">
+                Automating analytical reporting, document generation, and
+                workflow optimization.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/officeMaster.pdf" data-title="Office Master AI &amp; Automation" data-issuer="Office Master" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/officeMaster.pdf"
+              data-title="Office Master AI &amp; Automation"
+              data-issuer="Office Master"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/officeMaster.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/officeMaster.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2440,8 +3260,18 @@
               <span class="cert-badge">Event Host</span>
               <span class="cert-type-tag">JPG</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/Anchor.jpg" data-title="Official Event Host &amp; Anchor" data-issuer="College &amp; Cultural Celebrations" data-format="img">
-              <img src="./Achievements_&_Certifications/Anchor.jpg" alt="Official Event Host &amp; Anchor" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Anchor.jpg"
+              data-title="Official Event Host &amp; Anchor"
+              data-issuer="College &amp; Cultural Celebrations"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/Anchor.jpg"
+                alt="Official Event Host &amp; Anchor"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Certificate ↗</span>
               </div>
@@ -2449,14 +3279,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Official Event Host &amp; Anchor</h3>
               <p class="cert-issuer">College &amp; Cultural Celebrations</p>
-              <p class="cert-highlight">Main stage anchor for grand institutional celebrations and fests with 100+ attendee audiences.</p>
+              <p class="cert-highlight">
+                Main stage anchor for grand institutional celebrations and fests
+                with 100+ attendee audiences.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/Anchor.jpg" data-title="Official Event Host &amp; Anchor" data-issuer="College &amp; Cultural Celebrations" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Anchor.jpg"
+              data-title="Official Event Host &amp; Anchor"
+              data-issuer="College &amp; Cultural Celebrations"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/Anchor.jpg" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/Anchor.jpg"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2467,8 +3312,18 @@
               <span class="cert-badge">Anchor</span>
               <span class="cert-type-tag">JPG</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/Anchor2.jpg" data-title="Guest Lecture" data-issuer="Guest Lecture" data-format="img">
-              <img src="./Achievements_&_Certifications/Anchor2.jpg" alt="Guest Lecture" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Anchor2.jpg"
+              data-title="Guest Lecture"
+              data-issuer="Guest Lecture"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/Anchor2.jpg"
+                alt="Guest Lecture"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Certificate ↗</span>
               </div>
@@ -2476,14 +3331,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Guest Lecture</h3>
               <p class="cert-issuer">Guest Lecture</p>
-              <p class="cert-highlight">Live stage anchoring, public speaking, and engaging audience coordination.</p>
+              <p class="cert-highlight">
+                Live stage anchoring, public speaking, and engaging audience
+                coordination.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/Anchor2.jpg" data-title="Guest Lecture" data-issuer="Guest Lecture" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/Anchor2.jpg"
+              data-title="Guest Lecture"
+              data-issuer="Guest Lecture"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/Anchor2.jpg" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/Anchor2.jpg"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2494,9 +3364,19 @@
               <span class="cert-badge">Leadership</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/LeaderShip.pdf" data-title="Leadership &amp; Management Certificate" data-issuer="Event Organizing Committee" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/LeaderShip.pdf"
+              data-title="Leadership &amp; Management Certificate"
+              data-issuer="Event Organizing Committee"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Leadership Certificate</span>
               </div>
               <div class="thumb-overlay">
@@ -2506,14 +3386,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Leadership &amp; Management</h3>
               <p class="cert-issuer">Event Organizing Committee</p>
-              <p class="cert-highlight">Team coordination, resource management, and flawless execution of large-scale events.</p>
+              <p class="cert-highlight">
+                Team coordination, resource management, and flawless execution
+                of large-scale events.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/LeaderShip.pdf" data-title="Leadership &amp; Management Certificate" data-issuer="Event Organizing Committee" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/LeaderShip.pdf"
+              data-title="Leadership &amp; Management Certificate"
+              data-issuer="Event Organizing Committee"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/LeaderShip.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/LeaderShip.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2524,8 +3419,18 @@
               <span class="cert-badge">Student Guide</span>
               <span class="cert-type-tag">JPG</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/SG.jpg" data-title="Student Guide Executive Honor" data-issuer="Student guide Council" data-format="img">
-              <img src="./Achievements_&_Certifications/SG.jpg" alt="Student Guide Executive Honor" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/SG.jpg"
+              data-title="Student Guide Executive Honor"
+              data-issuer="Student guide Council"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/SG.jpg"
+                alt="Student Guide Executive Honor"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Certificate ↗</span>
               </div>
@@ -2533,14 +3438,29 @@
             <div class="cert-info">
               <h3 class="cert-title">Student Guide Executive Honor</h3>
               <p class="cert-issuer">Student Guide Council</p>
-              <p class="cert-highlight">Student council leadership, youth representation, and peer advocacy initiatives.</p>
+              <p class="cert-highlight">
+                Student council leadership, youth representation, and peer
+                advocacy initiatives.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/SG.jpg" data-title="Student Guide Executive Honor" data-issuer="Student Guide Council" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/SG.jpg"
+              data-title="Student Guide Executive Honor"
+              data-issuer="Student Guide Council"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/SG.jpg" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/SG.jpg"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2551,8 +3471,18 @@
               <span class="cert-badge">Achievement</span>
               <span class="cert-type-tag">JPG</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/DCC.jpg" data-title="LeetCode" data-issuer="LeetCode" data-format="img">
-              <img src="./Achievements_&_Certifications/DCC.jpg" alt="LeetCode" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/DCC.jpg"
+              data-title="LeetCode"
+              data-issuer="LeetCode"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/DCC.jpg"
+                alt="LeetCode"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Certificate ↗</span>
               </div>
@@ -2560,14 +3490,29 @@
             <div class="cert-info">
               <h3 class="cert-title">LeetCode Achievement</h3>
               <p class="cert-issuer">LeetCode</p>
-              <p class="cert-highlight">Recognition for active technical contributions and technical club achievements.</p>
+              <p class="cert-highlight">
+                Recognition for active technical contributions and technical
+                club achievements.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/DCC.jpg" data-title="LeetCode" data-issuer="LeetCode" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/DCC.jpg"
+              data-title="LeetCode"
+              data-issuer="LeetCode"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/DCC.jpg" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/DCC.jpg"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2578,8 +3523,18 @@
               <span class="cert-badge">Community</span>
               <span class="cert-type-tag">GIF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/3K+_Linkedin.gif" data-title="3K+ Tech Community Milestone" data-issuer="LinkedIn Community" data-format="img">
-              <img src="./Achievements_&_Certifications/3K+_Linkedin.gif" alt="3K+ Tech Community Milestone" loading="lazy" />
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/3K+_Linkedin.gif"
+              data-title="3K+ Tech Community Milestone"
+              data-issuer="LinkedIn Community"
+              data-format="img"
+            >
+              <img
+                src="./Achievements_&_Certifications/3K+_Linkedin.gif"
+                alt="3K+ Tech Community Milestone"
+                loading="lazy"
+              />
               <div class="thumb-overlay">
                 <span class="overlay-btn">Preview Milestone ↗</span>
               </div>
@@ -2587,14 +3542,29 @@
             <div class="cert-info">
               <h3 class="cert-title">3K+ Tech Community Milestone</h3>
               <p class="cert-issuer">LinkedIn Community</p>
-              <p class="cert-highlight">Grown a network of 3,000+ developers, tech leaders, and peers through active sharing.</p>
+              <p class="cert-highlight">
+                Grown a network of 3,000+ developers, tech leaders, and peers
+                through active sharing.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/3K+_Linkedin.gif" data-title="3K+ Tech Community Milestone" data-issuer="LinkedIn Community" data-format="img">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/3K+_Linkedin.gif"
+              data-title="3K+ Tech Community Milestone"
+              data-issuer="LinkedIn Community"
+              data-format="img"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/3K+_Linkedin.gif" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/3K+_Linkedin.gif"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
 
@@ -2605,9 +3575,19 @@
               <span class="cert-badge">Design</span>
               <span class="cert-type-tag">PDF</span>
             </div>
-            <div class="cert-thumb-box cert-preview-trigger" data-file="./Achievements_&_Certifications/photoshop.pdf" data-title="Adobe Photoshop &amp; UI Design" data-issuer="Graphic Design Training" data-format="pdf">
+            <div
+              class="cert-thumb-box cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/photoshop.pdf"
+              data-title="Adobe Photoshop &amp; UI Design"
+              data-issuer="Graphic Design Training"
+              data-format="pdf"
+            >
               <div class="cert-doc-preview">
-                <svg class="doc-icon-svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg class="doc-icon-svg" viewBox="0 0 24 24">
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                  />
+                </svg>
                 <span class="doc-type-label">Photoshop &amp; Design</span>
               </div>
               <div class="thumb-overlay">
@@ -2617,21 +3597,42 @@
             <div class="cert-info">
               <h3 class="cert-title">Adobe Photoshop &amp; UI Design</h3>
               <p class="cert-issuer">Graphic Design Training</p>
-              <p class="cert-highlight">Visual design, digital assets creation, UI layout prototyping, and brand creative styling.</p>
+              <p class="cert-highlight">
+                Visual design, digital assets creation, UI layout prototyping,
+                and brand creative styling.
+              </p>
             </div>
           </div>
           <div class="cert-actions">
-            <button class="cert-btn-preview cert-preview-trigger" data-file="./Achievements_&_Certifications/photoshop.pdf" data-title="Adobe Photoshop &amp; UI Design" data-issuer="Graphic Design Training" data-format="pdf">
+            <button
+              class="cert-btn-preview cert-preview-trigger"
+              data-file="./Achievements_&_Certifications/photoshop.pdf"
+              data-title="Adobe Photoshop &amp; UI Design"
+              data-issuer="Graphic Design Training"
+              data-format="pdf"
+            >
               <span>Preview on Page</span>
             </button>
-            <a href="./Achievements_&_Certifications/photoshop.pdf" target="_blank" class="cert-btn-open" title="Open in new tab">↗</a>
+            <a
+              href="./Achievements_&_Certifications/photoshop.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open in new tab"
+              >↗</a
+            >
           </div>
         </div>
       </div>
     </section>
 
     <!-- On-Page Certificate Modal Viewer -->
-    <div id="cert-modal" class="cert-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div
+      id="cert-modal"
+      class="cert-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
       <div class="cert-modal-backdrop" id="modal-backdrop"></div>
       <div class="cert-modal-content">
         <div class="cert-modal-header">
@@ -2640,10 +3641,31 @@
             <p id="modal-issuer">Issued by Organization</p>
           </div>
           <div class="cert-modal-actions">
-            <a id="modal-download" href="#" target="_blank" download class="modal-btn-download">
-              Open Document ↗
+            <a
+              id="modal-download"
+              href="#"
+              target="_blank"
+              download
+              class="modal-btn-download"
+            >
+              Download Document &darr;
             </a>
-            <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+            <a
+              id="modal-open-tab"
+              href="#"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open document in new tab"
+            >
+              Open Tab &nearr;
+            </a>
+            <button
+              id="modal-close-btn"
+              class="modal-close-btn"
+              aria-label="Close modal"
+            >
+              &times;
+            </button>
           </div>
         </div>
         <div class="cert-modal-body" id="modal-body"></div>
@@ -2651,30 +3673,53 @@
     </div>
 
     <!-- Dedicated Resume Downloaded Modal Dialogue Box -->
-    <div id="resume-modal" class="cert-modal" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title" aria-hidden="true">
+    <div
+      id="resume-modal"
+      class="cert-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="resume-modal-title"
+      aria-hidden="true"
+    >
       <div class="cert-modal-backdrop" id="resume-modal-backdrop"></div>
       <div class="cert-modal-content">
         <div class="cert-modal-header">
           <div class="cert-modal-info">
             <div class="resume-status-badge">
-              <span class="resume-badge-icon">&#10003;</span> Resume Downloaded Successfully!
+              <span class="resume-badge-icon">&#10003;</span> Resume Downloaded
+              Successfully!
             </div>
             <h3 id="resume-modal-title">Ahad Khan &mdash; Resume</h3>
-            <p id="resume-modal-subtitle">Full Stack MERN Developer | MCA Student &amp; BCA Graduate</p>
+            <p id="resume-modal-subtitle">
+              Full Stack MERN Developer | MCA Student &amp; BCA Graduate
+            </p>
           </div>
           <div class="cert-modal-actions">
-            <a id="resume-re-download" href="./Ahad_Khan_Resume.pdf" target="_blank" download="Ahad_Khan_Resume.pdf" class="modal-btn-download">
+            <button
+              id="resume-re-download"
+              class="modal-btn-download"
+              type="button"
+            >
               Download PDF Again &darr;
-            </a>
-            <a href="./Ahad_Khan_Resume.pdf" target="_blank" class="cert-btn-open" title="Open PDF in new tab">
+            </button>
+            <a
+              href="./Ahad_Khan_Resume.pdf"
+              target="_blank"
+              class="cert-btn-open"
+              title="Open PDF in new tab"
+            >
               Open Tab &nearr;
             </a>
-            <button id="resume-modal-close-btn" class="modal-close-btn" aria-label="Close resume modal">&times;</button>
+            <button
+              id="resume-modal-close-btn"
+              class="modal-close-btn"
+              aria-label="Close resume modal"
+            >
+              &times;
+            </button>
           </div>
         </div>
-        <div class="cert-modal-body">
-          <iframe id="resume-frame" src="./Ahad_Khan_Resume.pdf" title="Ahad Khan Resume Document Preview"></iframe>
-        </div>
+        <div class="cert-modal-body" id="resume-modal-body"></div>
       </div>
     </div>
 
@@ -2752,11 +3797,46 @@
     <footer>
       <p>
         &copy; 2026 Ahad Khan. All rights reserved. |
-        <a href="./Ahad_Khan_Resume.pdf" class="resume-modal-trigger" target="_blank" download="Ahad_Khan_Resume.pdf"
+        <a
+          href="./Ahad_Khan_Resume.pdf"
+          class="resume-modal-trigger"
+          target="_blank"
+          download="Ahad_Khan_Resume.pdf"
           >Download Resume</a
         >
       </p>
     </footer>
+
+    <!-- Fixed Mobile Bottom Navigation Bar -->
+    <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+      <a href="#about" class="bottom-nav-item" aria-label="About">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        <span>About</span>
+      </a>
+      <a href="#skills" class="bottom-nav-item" aria-label="Skills">
+        <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+        <span>Skills</span>
+      </a>
+      <a href="#experience" class="bottom-nav-item" aria-label="Experience">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+        <span>Experience</span>
+      </a>
+      <a href="#projects" class="bottom-nav-item" aria-label="Projects">
+        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+        <span>Projects</span>
+      </a>
+      <a href="#certifications" class="bottom-nav-item" aria-label="Honors">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <span>Honors</span>
+      </a>
+      <button class="bottom-nav-item resume-modal-trigger" type="button" aria-label="Resume">
+        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        <span>Resume</span>
+      </button>
+    </nav>
+
+    <!-- PDF.js library for high-resolution responsive PDF & document rendering -->
+    <script src="./js/pdf.min.js"></script>
 
     <script>
       const canvas = document.getElementById("scroll-canvas");
@@ -2901,7 +3981,10 @@
           const category = tab.getAttribute("data-category");
 
           certCards.forEach((card) => {
-            if (category === "all" || card.getAttribute("data-category") === category) {
+            if (
+              category === "all" ||
+              card.getAttribute("data-category") === category
+            ) {
               card.style.display = "flex";
             } else {
               card.style.display = "none";
@@ -2909,6 +3992,123 @@
           });
         });
       });
+
+      // Configure PDF.js worker
+      if (window.pdfjsLib) {
+        pdfjsLib.GlobalWorkerOptions.workerSrc = "./js/pdf.worker.min.js";
+      }
+
+      // Responsive document renderer (handles PDF canvas rendering and image loading)
+      function renderDocument(container, fileUrl, title, isPdf) {
+        if (!container) return;
+        container.innerHTML = `
+          <div class="modal-loader">
+            <div class="modal-spinner"></div>
+            <span style="color:#aaa; font-size:0.9rem; font-family:'Outfit', sans-serif;">Loading document preview...</span>
+          </div>
+        `;
+
+        if (isPdf && window.pdfjsLib) {
+          const loadingTask = pdfjsLib.getDocument(fileUrl);
+          loadingTask.promise
+            .then((pdf) => {
+              pdf.getPage(1).then((page) => {
+                container.innerHTML = "";
+
+                // Calculate optimal scale based on container width
+                const containerWidth = Math.max(container.clientWidth - 28, 280);
+                const unscaledViewport = page.getViewport({ scale: 1 });
+
+                // Scale to container width on mobile; cap height on desktop
+                let scale = containerWidth / unscaledViewport.width;
+                const maxHeight = window.innerHeight * 0.74;
+                if (unscaledViewport.height * scale > maxHeight && window.innerWidth > 768) {
+                  scale = maxHeight / unscaledViewport.height;
+                }
+
+                // Sharp retina rendering
+                const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+                const viewport = page.getViewport({ scale: scale });
+
+                const canvas = document.createElement("canvas");
+                canvas.className = "modal-doc-canvas";
+                const context = canvas.getContext("2d");
+                canvas.width = Math.floor(viewport.width * pixelRatio);
+                canvas.height = Math.floor(viewport.height * pixelRatio);
+                canvas.style.width = Math.floor(viewport.width) + "px";
+                canvas.style.height = Math.floor(viewport.height) + "px";
+
+                const transform = pixelRatio !== 1 ? [pixelRatio, 0, 0, pixelRatio, 0, 0] : null;
+
+                const renderContext = {
+                  canvasContext: context,
+                  transform: transform,
+                  viewport: viewport,
+                };
+
+                page.render(renderContext).promise.then(() => {
+                  // If multi-page document, render consecutive pages
+                  if (pdf.numPages > 1) {
+                    for (let p = 2; p <= pdf.numPages; p++) {
+                      pdf.getPage(p).then((nextPage) => {
+                        const nextViewport = nextPage.getViewport({ scale: scale });
+                        const nextCanvas = document.createElement("canvas");
+                        nextCanvas.className = "modal-doc-canvas";
+                        nextCanvas.style.marginTop = "1rem";
+                        const nextContext = nextCanvas.getContext("2d");
+                        nextCanvas.width = Math.floor(nextViewport.width * pixelRatio);
+                        nextCanvas.height = Math.floor(nextViewport.height * pixelRatio);
+                        nextCanvas.style.width = Math.floor(nextViewport.width) + "px";
+                        nextCanvas.style.height = Math.floor(nextViewport.height) + "px";
+                        const nextTransform = pixelRatio !== 1 ? [pixelRatio, 0, 0, pixelRatio, 0, 0] : null;
+                        nextPage.render({
+                          canvasContext: nextContext,
+                          transform: nextTransform,
+                          viewport: nextViewport,
+                        });
+                        container.appendChild(nextCanvas);
+                      });
+                    }
+                  }
+                });
+
+                container.appendChild(canvas);
+              });
+            })
+            .catch((err) => {
+              console.warn("PDF.js render fallback:", err);
+              container.innerHTML = `
+                <object data="${fileUrl}" type="application/pdf" class="modal-doc-fallback">
+                  <iframe src="${fileUrl}#toolbar=0&view=Fit" class="modal-doc-fallback">
+                    <p style="color:#fff; text-align:center; padding: 2rem;">
+                      Your device does not support inline PDF viewing.
+                      <br><br>
+                      <a href="${fileUrl}" target="_blank" class="modal-btn-download" style="display:inline-block;">Open Document Directly ↗</a>
+                    </p>
+                  </iframe>
+                </object>
+              `;
+            });
+        } else if (isPdf) {
+          // Fallback if pdfjsLib not loaded
+          container.innerHTML = `
+            <iframe src="${fileUrl}#toolbar=0&view=Fit" class="modal-doc-fallback"></iframe>
+          `;
+        } else {
+          // Image viewer
+          const img = new Image();
+          img.className = "modal-doc-img";
+          img.alt = title;
+          img.onload = () => {
+            container.innerHTML = "";
+            container.appendChild(img);
+          };
+          img.onerror = () => {
+            container.innerHTML = `<p style="color:#fff; text-align:center; padding: 2rem;">Unable to load image. <a href="${fileUrl}" target="_blank" style="color:#ff5722;">Open file directly ↗</a></p>`;
+          };
+          img.src = fileUrl;
+        }
+      }
 
       // Interactive On-Page Certificate Modal Viewer
       const certModal = document.getElementById("cert-modal");
@@ -2918,25 +4118,21 @@
       const modalIssuer = document.getElementById("modal-issuer");
       const modalBody = document.getElementById("modal-body");
       const modalDownload = document.getElementById("modal-download");
+      const modalOpenTab = document.getElementById("modal-open-tab");
 
       function openCertModal(fileUrl, title, issuer, format) {
         modalTitle.textContent = title;
         modalIssuer.textContent = issuer;
-        modalDownload.href = fileUrl;
-        modalDownload.setAttribute("download", title);
-        modalBody.innerHTML = "";
-
-        if (format === "pdf") {
-          const iframe = document.createElement("iframe");
-          iframe.src = fileUrl;
-          iframe.title = title;
-          modalBody.appendChild(iframe);
-        } else {
-          const img = document.createElement("img");
-          img.src = fileUrl;
-          img.alt = title;
-          modalBody.appendChild(img);
+        if (modalDownload) {
+          modalDownload.href = fileUrl;
+          modalDownload.setAttribute("download", title);
         }
+        if (modalOpenTab) {
+          modalOpenTab.href = fileUrl;
+        }
+
+        const isPdf = format === "pdf" || fileUrl.toLowerCase().endsWith(".pdf");
+        renderDocument(modalBody, fileUrl, title, isPdf);
 
         certModal.classList.add("open");
         certModal.setAttribute("aria-hidden", "false");
@@ -2961,38 +4157,72 @@
         });
       });
 
-      modalCloseBtn.addEventListener("click", closeCertModal);
-      modalBackdrop.addEventListener("click", closeCertModal);
+      if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeCertModal);
+      if (modalBackdrop) modalBackdrop.addEventListener("click", closeCertModal);
 
       // Interactive Dedicated Resume Downloaded Modal Dialogue Box
       const resumeModal = document.getElementById("resume-modal");
       const resumeModalBackdrop = document.getElementById("resume-modal-backdrop");
       const resumeModalCloseBtn = document.getElementById("resume-modal-close-btn");
+      const resumeModalBody = document.getElementById("resume-modal-body");
+      const resumeReDownload = document.getElementById("resume-re-download");
+
+      function triggerResumeDownload() {
+        const link = document.createElement("a");
+        link.href = "./Ahad_Khan_Resume.pdf";
+        link.download = "Ahad_Khan_Resume.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
 
       function openResumeModal() {
         if (!resumeModal) return;
         resumeModal.classList.add("open");
         resumeModal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
+
+        // Render resume preview via responsive PDF renderer
+        if (resumeModalBody) {
+          renderDocument(
+            resumeModalBody,
+            "./Ahad_Khan_Resume.pdf",
+            "Ahad Khan Resume",
+            true
+          );
+        }
       }
 
       function closeResumeModal() {
         if (!resumeModal) return;
         resumeModal.classList.remove("open");
         resumeModal.setAttribute("aria-hidden", "true");
+        if (resumeModalBody) resumeModalBody.innerHTML = "";
         document.body.style.overflow = "";
       }
 
+      // Automatically trigger download AND open resume preview modal on any resume click
       document.querySelectorAll(".resume-modal-trigger").forEach((el) => {
-        el.addEventListener("click", () => {
-          // Opens the modal dialogue box to display download confirmation and preview
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          triggerResumeDownload();
           openResumeModal();
         });
       });
 
-      if (resumeModalCloseBtn) resumeModalCloseBtn.addEventListener("click", closeResumeModal);
-      if (resumeModalBackdrop) resumeModalBackdrop.addEventListener("click", closeResumeModal);
+      if (resumeReDownload) {
+        resumeReDownload.addEventListener("click", (e) => {
+          e.preventDefault();
+          triggerResumeDownload();
+        });
+      }
 
+      if (resumeModalCloseBtn)
+        resumeModalCloseBtn.addEventListener("click", closeResumeModal);
+      if (resumeModalBackdrop)
+        resumeModalBackdrop.addEventListener("click", closeResumeModal);
+
+      // Keyboard navigation (Escape to close open modals)
       window.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
           if (certModal && certModal.classList.contains("open")) {
@@ -3003,6 +4233,29 @@
           }
         }
       });
+
+      // Active section indicator for bottom navigation
+      const navSections = document.querySelectorAll("section[id], header[id]");
+      const bottomNavLinks = document.querySelectorAll(".bottom-nav-item[href]");
+
+      function updateActiveBottomNav() {
+        const scrollPosition = window.scrollY + 180;
+        navSections.forEach((sec) => {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          const id = sec.getAttribute("id");
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            bottomNavLinks.forEach((link) => {
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              } else {
+                link.classList.remove("active");
+              }
+            });
+          }
+        });
+      }
+      window.addEventListener("scroll", updateActiveBottomNav, { passive: true });
     </script>
   </body>
 </html>
