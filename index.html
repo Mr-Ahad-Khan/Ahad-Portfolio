@@ -1697,20 +1697,22 @@
         }
 
         .cert-tabs {
-          overflow-x: auto;
-          flex-wrap: nowrap;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          width: 100%;
+          box-sizing: border-box;
+          overflow: visible;
           padding-bottom: 0.6rem;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-        }
-
-        .cert-tabs::-webkit-scrollbar {
-          display: none;
+          gap: 0.65rem;
         }
 
         .cert-tab {
-          white-space: nowrap;
+          min-width: 0;
+          width: 100%;
+          min-height: 3rem;
+          padding: 0.65rem 0.75rem;
+          line-height: 1.2;
+          white-space: normal;
         }
 
         .cert-modal-content {
