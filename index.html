@@ -42,12 +42,15 @@
         align-items: center;
         overflow: hidden;
         z-index: -1;
+        pointer-events: none;
+        contain: strict;
       }
 
       canvas {
         width: 100%;
         height: 100vh;
         object-fit: cover;
+        transform: translateZ(0);
       }
 
       /* Nav */
@@ -879,6 +882,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         gap: 2rem;
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 1000px;
       }
 
       .cert-card {
@@ -1628,6 +1633,18 @@
       @media (max-width: 768px) {
         .top-nav {
           padding: 0.8rem 1rem;
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+        }
+
+        .hero-top,
+        .hero-achievements-card,
+        .card,
+        .cert-card,
+        .contact-card {
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          background: rgba(10, 10, 15, 0.92);
         }
 
         .nav-right {
@@ -1893,8 +1910,8 @@
           min-height: 62px;
           height: calc(62px + env(safe-area-inset-bottom, 0px));
           background: rgba(10, 10, 15, 0.96) !important;
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           border-top: 1px solid rgba(255, 255, 255, 0.12);
           border-bottom: none !important;
           z-index: 99998;
@@ -4201,63 +4218,113 @@
     <script src="./js/pdf.min.js"></script>
 
     <script>
+      // High-performance canvas background with adaptive frame loading and idle suspension
       const canvas = document.getElementById("scroll-canvas");
-      const context = canvas.getContext("2d");
+      const context = canvas ? canvas.getContext("2d", { alpha: false }) : null;
+      const isMobile = window.innerWidth <= 768;
       const frameCount = 300;
+      // On desktop, sample every 4 frames (75 total frames) for smooth scrub with 75% memory/network reduction
+      const frameStep = isMobile ? 300 : 4;
 
       const currentFrame = (index) =>
-        `frames/ezgif-frame-${index.toString().padStart(3, "0")}.jpg`;
+        `frames/ezgif-frame-${Math.min(frameCount, Math.max(1, index)).toString().padStart(3, "0")}.jpg`;
 
-      const images = [];
+      const images = new Map();
+      const firstFrameImg = new Image();
+      firstFrameImg.src = currentFrame(1);
+      firstFrameImg.onload = () => {
+        if (context && canvas) {
+          context.drawImage(firstFrameImg, 0, 0, canvas.width, canvas.height);
+        }
+      };
+      images.set(1, firstFrameImg);
 
-      for (let i = 1; i <= frameCount; i++) {
-        const img = new Image();
-        img.src = currentFrame(i);
-        images.push(img);
+      // Only preload additional frames on desktop devices, loaded progressively during idle periods
+      if (!isMobile) {
+        const loadRemainingFrames = () => {
+          let nextFrameToLoad = 1 + frameStep;
+          function loadBatch() {
+            let loadedInBatch = 0;
+            while (nextFrameToLoad <= frameCount && loadedInBatch < 4) {
+              const frameIdx = nextFrameToLoad;
+              if (!images.has(frameIdx)) {
+                const img = new Image();
+                img.src = currentFrame(frameIdx);
+                images.set(frameIdx, img);
+              }
+              nextFrameToLoad += frameStep;
+              loadedInBatch++;
+            }
+            if (nextFrameToLoad <= frameCount) {
+              if ("requestIdleCallback" in window) {
+                requestIdleCallback(loadBatch, { timeout: 1000 });
+              } else {
+                setTimeout(loadBatch, 60);
+              }
+            }
+          }
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(loadBatch, { timeout: 1500 });
+          } else {
+            setTimeout(loadBatch, 150);
+          }
+        };
+
+        if (document.readyState === "complete") {
+          loadRemainingFrames();
+        } else {
+          window.addEventListener("load", loadRemainingFrames, { once: true });
+        }
       }
 
-      images[0].onload = () => {
-        context.drawImage(images[0], 0, 0, canvas.width, canvas.height);
-      };
+      let targetFrameIndex = 1;
+      let currentFrameIndex = 1;
+      let isRafRunning = false;
 
-      let targetFrameIndex = 0;
-      let currentFrameIndex = 0;
+      function renderCanvasFrame() {
+        if (!context || !canvas) return;
 
-      window.addEventListener("scroll", () => {
+        currentFrameIndex += (targetFrameIndex - currentFrameIndex) * 0.12;
+        const desiredFrame = Math.round(currentFrameIndex);
+        const snappedFrame = Math.min(
+          frameCount,
+          Math.max(1, Math.round(desiredFrame / frameStep) * frameStep || 1),
+        );
+
+        const imgToDraw = images.get(snappedFrame) || images.get(1) || firstFrameImg;
+        if (imgToDraw && imgToDraw.complete && imgToDraw.naturalWidth !== 0) {
+          context.drawImage(imgToDraw, 0, 0, canvas.width, canvas.height);
+        }
+
+        // Suspend RAF loop when settled to drop CPU/GPU usage to 0% at rest
+        if (Math.abs(targetFrameIndex - currentFrameIndex) > 0.05) {
+          requestAnimationFrame(renderCanvasFrame);
+        } else {
+          currentFrameIndex = targetFrameIndex;
+          isRafRunning = false;
+        }
+      }
+
+      function onCanvasScroll() {
+        if (isMobile) return; // Static background on mobile prevents battery drain and scroll hitching
+
         const html = document.documentElement;
-        const scrollTop = html.scrollTop || document.body.scrollTop;
+        const scrollTop = window.scrollY || html.scrollTop || document.body.scrollTop;
         const maxScrollTop = html.scrollHeight - window.innerHeight;
-
         const scrollFraction = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
 
         targetFrameIndex = Math.min(
-          frameCount - 1,
-          Math.max(0, Math.floor(scrollFraction * frameCount)),
+          frameCount,
+          Math.max(1, Math.floor(scrollFraction * (frameCount - 1)) + 1),
         );
-      });
 
-      function updateCanvas() {
-        currentFrameIndex += (targetFrameIndex - currentFrameIndex) * 0.08;
-        const frameIndex = Math.round(currentFrameIndex);
-
-        if (
-          images[frameIndex] &&
-          images[frameIndex].complete &&
-          images[frameIndex].naturalWidth !== 0
-        ) {
-          context.drawImage(
-            images[frameIndex],
-            0,
-            0,
-            canvas.width,
-            canvas.height,
-          );
+        if (!isRafRunning) {
+          isRafRunning = true;
+          requestAnimationFrame(renderCanvasFrame);
         }
-
-        requestAnimationFrame(updateCanvas);
       }
 
-      updateCanvas();
+      window.addEventListener("scroll", onCanvasScroll, { passive: true });
 
       // Hamburger Menu Toggle
       const burgerToggle = document.getElementById("burger-toggle");
@@ -4406,7 +4473,9 @@
             }
           });
 
-          setTimeout(() => renderPdfThumbnails(true), 0);
+          if (window.innerWidth > 768) {
+            setTimeout(initPdfThumbnailObserver, 0);
+          }
         });
       });
 
@@ -4457,10 +4526,11 @@
         }
 
         if (isPdf && window.pdfjsLib) {
+          const useWorker = location.protocol !== "file:";
           const loadingTask = pdfjsLib.getDocument({
             url: fileUrl,
             verbosity: pdfJsVerbosity,
-            disableWorker: true,
+            disableWorker: !useWorker,
           });
           loadingTask.promise
             .then((pdf) => {
@@ -4614,11 +4684,12 @@
         thumbnail.dataset.pdfRenderKey = renderKey;
         thumbnail.dataset.pdfRendered = "true";
 
-        pdfjsLib
+        const useWorker = location.protocol !== "file:";
+        return pdfjsLib
           .getDocument({
             url: fileUrl,
             verbosity: pdfJsVerbosity,
-            disableWorker: true,
+            disableWorker: !useWorker,
           })
           .promise.then((pdf) => pdf.getPage(1))
           .then((page) => {
@@ -4659,7 +4730,34 @@
           });
       }
 
-      function renderPdfThumbnails(force = false) {
+      // Lazy PDF Thumbnail Rendering via IntersectionObserver & Concurrency Queue
+      const pdfRenderQueue = [];
+      let isRenderingPdf = false;
+
+      function queuePdfThumbnailRender(thumbnail) {
+        if (!thumbnail || thumbnail.dataset.pdfQueued === "true") return;
+        thumbnail.dataset.pdfQueued = "true";
+        pdfRenderQueue.push(thumbnail);
+        processPdfRenderQueue();
+      }
+
+      function processPdfRenderQueue() {
+        if (isRenderingPdf || pdfRenderQueue.length === 0) return;
+        isRenderingPdf = true;
+        const nextThumb = pdfRenderQueue.shift();
+        const renderPromise = renderPdfThumbnail(nextThumb);
+        if (renderPromise && typeof renderPromise.finally === "function") {
+          renderPromise.finally(() => {
+            isRenderingPdf = false;
+            processPdfRenderQueue();
+          });
+        } else {
+          isRenderingPdf = false;
+          processPdfRenderQueue();
+        }
+      }
+
+      function initPdfThumbnailObserver() {
         if (location.protocol === "file:") {
           document
             .querySelectorAll('.cert-thumb-box[data-format="pdf"]')
@@ -4677,24 +4775,35 @@
 
         if (!window.pdfjsLib) return;
 
-        document
-          .querySelectorAll('.cert-thumb-box[data-format="pdf"]')
-          .forEach((thumbnail) => {
-            renderPdfThumbnail(thumbnail, force);
-          });
+        // On mobile viewports, maintain the clean SVG card preview to prevent mobile network/memory contention
+        if (window.innerWidth <= 768) {
+          return;
+        }
+
+        if ("IntersectionObserver" in window) {
+          const thumbObserver = new IntersectionObserver(
+            (entries, obs) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  obs.unobserve(entry.target);
+                  queuePdfThumbnailRender(entry.target);
+                }
+              });
+            },
+            { rootMargin: "300px 0px" },
+          );
+
+          document
+            .querySelectorAll('.cert-thumb-box[data-format="pdf"]')
+            .forEach((thumbnail) => {
+              if (thumbnail.dataset.pdfRendered !== "true") {
+                thumbObserver.observe(thumbnail);
+              }
+            });
+        }
       }
 
-      renderPdfThumbnails();
-
-      let thumbnailResizeTimer;
-      const rerenderVisiblePdfThumbnails = () => {
-        clearTimeout(thumbnailResizeTimer);
-        thumbnailResizeTimer = setTimeout(() => renderPdfThumbnails(true), 160);
-      };
-
-      window.addEventListener("resize", rerenderVisiblePdfThumbnails, {
-        passive: true,
-      });
+      initPdfThumbnailObserver();
 
       // Interactive On-Page Certificate Modal Viewer
       const certModal = document.getElementById("cert-modal");
@@ -4837,44 +4946,56 @@
         }
       });
 
-      // Active section indicator for bottom navigation
+      // Active section indicator for bottom navigation using IntersectionObserver (zero layout thrashing)
       const navSections = document.querySelectorAll("section[id], header[id]");
       const bottomNavLinks = document.querySelectorAll(
         ".bottom-nav-item[href]",
       );
 
-      function updateActiveBottomNav() {
-        const scrollPosition = window.scrollY + 180;
-        navSections.forEach((sec) => {
-          const top = sec.offsetTop;
-          const height = sec.offsetHeight;
-          const id = sec.getAttribute("id");
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            bottomNavLinks.forEach((link) => {
-              if (link.getAttribute("href") === `#${id}`) {
-                link.classList.add("active");
-              } else {
-                link.classList.remove("active");
+      if ("IntersectionObserver" in window) {
+        const sectionObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
+                if (id) {
+                  bottomNavLinks.forEach((link) => {
+                    link.classList.toggle(
+                      "active",
+                      link.getAttribute("href") === `#${id}`,
+                    );
+                  });
+                }
               }
             });
-          }
-        });
+          },
+          { rootMargin: "-25% 0px -50% 0px", threshold: 0 },
+        );
+        navSections.forEach((sec) => sectionObserver.observe(sec));
       }
-      window.addEventListener("scroll", updateActiveBottomNav, {
-        passive: true,
-      });
 
       const backToTop = document.querySelector(".back-to-top");
+      let backToTopTicking = false;
       window.addEventListener(
         "scroll",
         () => {
-          backToTop.classList.toggle("visible", window.scrollY > 500);
+          if (!backToTopTicking) {
+            backToTopTicking = true;
+            requestAnimationFrame(() => {
+              if (backToTop) {
+                backToTop.classList.toggle("visible", window.scrollY > 500);
+              }
+              backToTopTicking = false;
+            });
+          }
         },
         { passive: true },
       );
-      backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+      if (backToTop) {
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
     </script>
   </body>
 </html>
