@@ -1397,27 +1397,46 @@
       /* Footer styling */
       footer {
         text-align: center;
-        padding: 2.5rem 0;
+        padding: 2.5rem 1.5rem;
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         background: rgba(0, 0, 0, 0.85);
         position: relative;
         z-index: 10;
       }
 
-      footer p {
+      .footer-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.6rem 0.8rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      footer p,
+      .footer-copy {
         margin: 0;
         color: #aaa;
         font-size: 1rem;
+      }
+
+      .footer-divider {
+        color: rgba(255, 255, 255, 0.3);
+        user-select: none;
       }
 
       footer a {
         color: #ff7849;
         text-decoration: none;
         font-weight: 600;
-        margin-left: 0.5rem;
-        transition: color 0.3s ease;
+        transition: color 0.3s ease, border-color 0.3s ease;
         border-bottom: 1px dotted rgba(255, 120, 73, 0.5);
         padding-bottom: 1px;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
       }
 
       footer a:hover {
@@ -1923,7 +1942,28 @@
         }
 
         footer {
-          padding-bottom: 2.5rem;
+          padding: 2rem 1.25rem calc(2.2rem + env(safe-area-inset-bottom, 0px));
+        }
+
+        .footer-content {
+          flex-direction: column;
+          gap: 0.5rem;
+          text-align: center;
+          padding: 0 0.5rem;
+        }
+
+        .footer-copy {
+          font-size: 0.88rem;
+          line-height: 1.4;
+        }
+
+        .footer-divider {
+          display: none;
+        }
+
+        footer a {
+          font-size: 0.92rem;
+          margin-left: 0;
         }
 
         .mobile-bottom-nav {
@@ -4169,8 +4209,9 @@
     </div>
 
     <footer>
-      <p>
-        &copy; 2026 Ahad Khan. All rights reserved. |
+      <div class="footer-content">
+        <p class="footer-copy">&copy; 2026 Ahad Khan. All rights reserved.</p>
+        <span class="footer-divider" aria-hidden="true">|</span>
         <a
           href="./Ahad_Khan_Resume.pdf"
           class="resume-modal-trigger"
@@ -4178,7 +4219,7 @@
           download="Ahad_Khan_Resume.pdf"
           >Download Resume</a
         >
-      </p>
+      </div>
     </footer>
 
     <!-- Fixed Mobile Bottom Navigation Bar -->
