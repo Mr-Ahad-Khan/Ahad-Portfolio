@@ -1454,25 +1454,32 @@
           top: 100%;
           left: 0;
           right: 0;
-          width: auto;
+          width: 100%;
           background: rgba(0, 0, 0, 0.96);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          padding: 0.7rem 5% 0.85rem;
+          padding: 0.75rem 4% 0.85rem;
           box-sizing: border-box;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          gap: 0.35rem 1.5rem;
+          gap: 0.5rem 0.75rem;
           z-index: 99;
           box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
         }
 
         .nav-links a {
-          font-size: 0.95rem;
-          padding: 0.2rem 0;
+          font-size: 0.88rem;
+          padding: 0.45rem 0.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          min-height: 42px;
+          box-sizing: border-box;
+          width: 100%;
         }
 
         .nav-links a:nth-child(5) {
-          grid-column: 1 / -1;
+          grid-column: auto;
         }
 
         .hero-grid {
@@ -1657,17 +1664,35 @@
         }
 
         .nav-links.active {
-          grid-template-columns: 1fr;
-          gap: 0.25rem;
-          padding-left: 1rem;
-          padding-right: 1rem;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0.45rem 0.55rem;
+          padding: 0.75rem 3% 0.85rem;
+          left: 0;
+          right: 0;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        @media (min-width: 520px) {
+          .nav-links.active {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.5rem 0.75rem;
+          }
         }
 
         .nav-links a,
         .nav-links a:nth-child(5) {
           grid-column: auto;
-          justify-content: flex-start;
-          padding: 0.65rem 0.75rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 0.45rem 0.35rem;
+          font-size: clamp(0.76rem, 2.7vw, 0.88rem);
+          line-height: 1.2;
+          min-height: 42px;
+          box-sizing: border-box;
+          width: 100%;
         }
 
         .btn {
@@ -4218,85 +4243,143 @@
     <script src="./js/pdf.min.js"></script>
 
     <script>
-      // High-performance canvas background with adaptive frame loading and idle suspension
+      // High-performance canvas background with scroll sync, on-demand prioritized loading & zero layout thrashing
       const canvas = document.getElementById("scroll-canvas");
-      const context = canvas ? canvas.getContext("2d", { alpha: false }) : null;
-      const isMobile = window.innerWidth <= 768;
+      const context = canvas
+        ? canvas.getContext("2d", { alpha: false, desynchronized: true })
+        : null;
       const frameCount = 300;
-      // On desktop, sample every 4 frames (75 total frames) for smooth scrub with 75% memory/network reduction
-      const frameStep = isMobile ? 300 : 4;
+      // Step of 4 on mobile (75 frames) and step of 3 on desktop (100 frames) keeps network & memory lightweight
+      const frameStep = window.innerWidth <= 768 ? 4 : 3;
 
       const currentFrame = (index) =>
         `frames/ezgif-frame-${Math.min(frameCount, Math.max(1, index)).toString().padStart(3, "0")}.jpg`;
 
       const images = new Map();
+      const requestedFrames = new Set();
+
+      const getSnappedFrame = (f) => {
+        const snapped = Math.round((f - 1) / frameStep) * frameStep + 1;
+        return Math.min(frameCount, Math.max(1, snapped));
+      };
+
       const firstFrameImg = new Image();
+      firstFrameImg.decoding = "async";
       firstFrameImg.src = currentFrame(1);
+      requestedFrames.add(1);
       firstFrameImg.onload = () => {
+        images.set(1, firstFrameImg);
         if (context && canvas) {
           context.drawImage(firstFrameImg, 0, 0, canvas.width, canvas.height);
         }
       };
-      images.set(1, firstFrameImg);
 
-      // Only preload additional frames on desktop devices, loaded progressively during idle periods
-      if (!isMobile) {
-        const loadRemainingFrames = () => {
-          let nextFrameToLoad = 1 + frameStep;
-          function loadBatch() {
-            let loadedInBatch = 0;
-            while (nextFrameToLoad <= frameCount && loadedInBatch < 4) {
-              const frameIdx = nextFrameToLoad;
-              if (!images.has(frameIdx)) {
-                const img = new Image();
-                img.src = currentFrame(frameIdx);
-                images.set(frameIdx, img);
-              }
-              nextFrameToLoad += frameStep;
-              loadedInBatch++;
+      function requestFrame(idx) {
+        const frameIdx = Math.min(frameCount, Math.max(1, idx));
+        if (requestedFrames.has(frameIdx)) return;
+        requestedFrames.add(frameIdx);
+
+        const img = new Image();
+        img.decoding = "async";
+        img.src = currentFrame(frameIdx);
+        img.onload = () => {
+          images.set(frameIdx, img);
+          // If the viewer is currently within range of this loaded frame, trigger render
+          if (Math.abs(currentFrameIndex - frameIdx) <= frameStep * 2) {
+            if (!isRafRunning) {
+              isRafRunning = true;
+              requestAnimationFrame(renderCanvasFrame);
             }
-            if (nextFrameToLoad <= frameCount) {
-              if ("requestIdleCallback" in window) {
-                requestIdleCallback(loadBatch, { timeout: 1000 });
-              } else {
-                setTimeout(loadBatch, 60);
-              }
-            }
-          }
-          if ("requestIdleCallback" in window) {
-            requestIdleCallback(loadBatch, { timeout: 1500 });
-          } else {
-            setTimeout(loadBatch, 150);
           }
         };
+      }
 
-        if (document.readyState === "complete") {
-          loadRemainingFrames();
-        } else {
-          window.addEventListener("load", loadRemainingFrames, { once: true });
+      // Pre-request nearest frames on scroll
+      function preloadNear(snapped) {
+        requestFrame(snapped);
+        requestFrame(getSnappedFrame(snapped + frameStep));
+        requestFrame(getSnappedFrame(snapped - frameStep));
+      }
+
+      // Progressive background preloading during idle to ensure zero bandwidth hogging
+      const allFramesToLoad = [];
+      for (let i = 1; i <= frameCount; i += frameStep) {
+        allFramesToLoad.push(i);
+      }
+      if (allFramesToLoad[allFramesToLoad.length - 1] !== frameCount) {
+        allFramesToLoad.push(frameCount);
+      }
+
+      let preloadIdx = 0;
+      function preloadBatch() {
+        let loaded = 0;
+        while (preloadIdx < allFramesToLoad.length && loaded < 3) {
+          const f = allFramesToLoad[preloadIdx++];
+          if (!requestedFrames.has(f)) {
+            requestFrame(f);
+            loaded++;
+          }
         }
+        if (preloadIdx < allFramesToLoad.length) {
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(preloadBatch, { timeout: 1000 });
+          } else {
+            setTimeout(preloadBatch, 80);
+          }
+        }
+      }
+
+      if (document.readyState === "complete") {
+        preloadBatch();
+      } else {
+        window.addEventListener("load", preloadBatch, { once: true });
+      }
+
+      // Fast nearest loaded frame lookup (never falls back to frame 1 unless at top)
+      function getBestAvailableImage(target) {
+        const exact = images.get(target);
+        if (exact && exact.complete && exact.naturalWidth !== 0) {
+          return exact;
+        }
+        let bestDist = Infinity;
+        let bestImg = null;
+        for (const [f, img] of images.entries()) {
+          if (img && img.complete && img.naturalWidth !== 0) {
+            const dist = Math.abs(f - target);
+            if (dist < bestDist) {
+              bestDist = dist;
+              bestImg = img;
+            }
+          }
+        }
+        return bestImg || firstFrameImg;
       }
 
       let targetFrameIndex = 1;
       let currentFrameIndex = 1;
+      let lastDrawnImg = null;
       let isRafRunning = false;
 
       function renderCanvasFrame() {
         if (!context || !canvas) return;
 
-        currentFrameIndex += (targetFrameIndex - currentFrameIndex) * 0.12;
-        const desiredFrame = Math.round(currentFrameIndex);
-        const snappedFrame = Math.min(
-          frameCount,
-          Math.max(1, Math.round(desiredFrame / frameStep) * frameStep || 1),
-        );
-
-        const imgToDraw = images.get(snappedFrame) || images.get(1) || firstFrameImg;
-        if (imgToDraw && imgToDraw.complete && imgToDraw.naturalWidth !== 0) {
-          context.drawImage(imgToDraw, 0, 0, canvas.width, canvas.height);
+        const diff = targetFrameIndex - currentFrameIndex;
+        if (Math.abs(diff) < 0.2) {
+          currentFrameIndex = targetFrameIndex;
+        } else {
+          currentFrameIndex += diff * 0.35; // Responsive tracking without sluggish lag
         }
 
-        // Suspend RAF loop when settled to drop CPU/GPU usage to 0% at rest
+        const snapped = getSnappedFrame(Math.round(currentFrameIndex));
+        const imgToDraw = getBestAvailableImage(snapped);
+
+        if (imgToDraw && imgToDraw.complete && imgToDraw.naturalWidth !== 0) {
+          if (imgToDraw !== lastDrawnImg) {
+            context.drawImage(imgToDraw, 0, 0, canvas.width, canvas.height);
+            lastDrawnImg = imgToDraw;
+          }
+        }
+
         if (Math.abs(targetFrameIndex - currentFrameIndex) > 0.05) {
           requestAnimationFrame(renderCanvasFrame);
         } else {
@@ -4306,17 +4389,18 @@
       }
 
       function onCanvasScroll() {
-        if (isMobile) return; // Static background on mobile prevents battery drain and scroll hitching
-
         const html = document.documentElement;
-        const scrollTop = window.scrollY || html.scrollTop || document.body.scrollTop;
+        const scrollTop = window.scrollY || html.scrollTop || document.body.scrollTop || 0;
         const maxScrollTop = html.scrollHeight - window.innerHeight;
-        const scrollFraction = maxScrollTop > 0 ? scrollTop / maxScrollTop : 0;
+        const scrollFraction = maxScrollTop > 0 ? Math.min(1, Math.max(0, scrollTop / maxScrollTop)) : 0;
 
         targetFrameIndex = Math.min(
           frameCount,
-          Math.max(1, Math.floor(scrollFraction * (frameCount - 1)) + 1),
+          Math.max(1, Math.round(scrollFraction * (frameCount - 1)) + 1),
         );
+
+        const snapped = getSnappedFrame(targetFrameIndex);
+        preloadNear(snapped);
 
         if (!isRafRunning) {
           isRafRunning = true;
@@ -4325,6 +4409,7 @@
       }
 
       window.addEventListener("scroll", onCanvasScroll, { passive: true });
+      window.addEventListener("resize", onCanvasScroll, { passive: true });
 
       // Hamburger Menu Toggle
       const burgerToggle = document.getElementById("burger-toggle");
